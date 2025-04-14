@@ -1,0 +1,583 @@
+5000051820 - INTERFACE ROSLANE Table => 10jours
+DIANA PPR 100 IMOUSLIH
+PROGRAMME : ZPROG_EXTAB_CSV
+OT :  PPRK904571
+FONCT : INSAF
+REP TEST : \\SAPPPR\sapmnt\PPR\SYS\profile
+REP FINAL : \\172.16.1.192\ROSLANE-SAP\INTODOO\OUT\UTF8_CSV.CSV
+
+Un programme qui exporte depuis les tables directement, avec une écran de sélection : choix de la table, la variante et la mise en forme.
+• Fichier CSV UTF8, sans entête
+• Format date : aaaa-mm-jj
+• Format Chiffre : Pas de séparateur millier, séparateur décimal point (.)
+
+
+=========================================> TEST
+table 	 :  LIPS
+meF   	 :  /ZIMOUSLIH
+variante : LIPSTEST / LIPSTEST2 / LIPSTEST3
+
+
+=========================================> CODE
+*&---------------------------------------------------------------------*
+*& Report ZPROG_EXTAB_CSV
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zprog_extab_csv.
+
+INCLUDE : zinc_extab_csv_top,
+          zinc_extab_csv_scr,
+          zinc_extab_csv_f01.
+
+INITIALIZATION.
+
+START-OF-SELECTION.
+
+  IF p_tab IS INITIAL.
+    MESSAGE 'Le champs "Table" est obligatoire.' TYPE 'E'.
+    EXIT.
+  ENDIF.
+
+  PERFORM : verify_inputs.
+  PERFORM : selection_variant.
+  PERFORM : layout_variant.
+  PERFORM : format_data.
+  PERFORM : upload_csv.
+
+END-OF-SELECTION.
+
+*&---------------------------------------------------------------------*
+*& Include          ZINC_EXTAB_CSV_TOP
+*&---------------------------------------------------------------------*
+TABLES: dd02l.
+
+TYPES: BEGIN OF ty_s_clause,
+         line(72) TYPE c,
+       END OF ty_s_clause.
+DATA: gt_where_clauses TYPE STANDARD TABLE OF ty_s_clause WITH DEFAULT KEY.
+FIELD-SYMBOLS <fs_wherecond> TYPE ty_s_clause.
+
+DATA: BEGIN OF gt_condtab OCCURS 0.
+        INCLUDE STRUCTURE hrcond.
+DATA: END OF gt_condtab.
+
+" Create dynamic table and assign to field symbol
+DATA: dy_table TYPE REF TO data.
+FIELD-SYMBOLS: <dyn_table> TYPE STANDARD TABLE,
+               <fs_table> TYPE INDEX TABLE.
+
+" File path
+DATA : path_file TYPE rlgrap-filename VALUE '\\SAPPPR\sapmnt\PPR\SYS\profile\UTF8_CSV.CSV'.
+
+*&---------------------------------------------------------------------*
+*& Include          ZINC_EXTAB_CSV_SCR
+*&---------------------------------------------------------------------*
+SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
+  PARAMETERS: p_tab TYPE dd02l-tabname,
+              p_var TYPE string,
+              p_mef TYPE string.
+SELECTION-SCREEN END OF BLOCK b1.
+
+*&---------------------------------------------------------------------*
+*& Include          ZINC_EXTAB_CSV_F01
+*&---------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*& Form verify_inputs
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM verify_inputs .
+
+  " Validate Table Name
+  SELECT SINGLE *
+    FROM dd02l
+    INTO @DATA(lv_tab)
+    WHERE tabname EQ @p_tab.
+  IF lv_tab IS INITIAL.
+    MESSAGE 'Table introuvable.' TYPE 'E'.
+  ENDIF.
+
+  " Validate Selection Variant
+  IF p_var IS NOT INITIAL.
+    SELECT SINGLE *
+      FROM se16n_lt
+      INTO @DATA(lv_var)
+      WHERE name EQ @p_var.
+    IF lv_var IS INITIAL.
+      MESSAGE 'Variante introuvable.' TYPE 'E'.
+    ENDIF.
+  ENDIF.
+
+  " Validate Selection Variant
+  IF p_mef IS NOT INITIAL.
+    SELECT SINGLE *
+      FROM ltdx
+      INTO @DATA(lv_mef)
+      WHERE variant = @p_mef.
+    IF lv_var IS INITIAL.
+      MESSAGE 'Mise en forme introuvable.' TYPE 'E'.
+    ENDIF.
+  ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form selection_variante
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM selection_variant.
+
+  CREATE DATA dy_table TYPE STANDARD TABLE OF (p_tab).
+  ASSIGN dy_table->* TO <dyn_table>.
+
+  IF p_var IS NOT INITIAL.
+
+    DATA: lt_variant   TYPE TABLE OF se16n_lt,
+          lt_selection TYPE TABLE OF se16n_ltd,
+          gt_condtab   TYPE TABLE OF hrcond,  " Table for RH_DYNAMIC_WHERE_BUILD
+          gs_condtab   TYPE hrcond.           " Work area for each condition
+
+    " Fetch variant data related to SE16N tables
+    SELECT *
+      FROM se16n_lt
+      INTO TABLE @lt_variant
+      WHERE name EQ @p_var
+        AND tab EQ @p_tab.
+
+    IF sy-subrc EQ 0.
+      SELECT *
+        FROM se16n_ltd
+        INTO TABLE @lt_selection
+        FOR ALL ENTRIES IN @lt_variant
+        WHERE guid EQ @lt_variant-guid
+          AND counter EQ '001'.
+
+      IF sy-subrc EQ 0.
+
+        LOOP AT lt_selection INTO DATA(ls_selection).
+
+          " Clear the condition structure for each new entry
+          CLEAR gs_condtab.
+
+          " Set the field name
+          gs_condtab-field = ls_selection-field.
+
+          " Handle cases with or without HIGH value
+          IF ls_selection-high IS INITIAL.  " Only LOW value provided
+
+            IF ls_selection-sign = 'I'.  " Include case
+              CASE ls_selection-optio.
+                WHEN '' OR 'EQ'.  " Equal to
+                  gs_condtab-opera = 'EQ'.
+                WHEN 'NE'.  " Not equal to
+                  gs_condtab-opera = 'NE'.
+                WHEN 'GT'.  " Greater than
+                  gs_condtab-opera = 'GT'.
+                WHEN 'GE'.  " Greater or equal
+                  gs_condtab-opera = 'GE'.
+                WHEN 'LT'.  " Less than
+                  gs_condtab-opera = 'LT'.
+                WHEN 'LE'.  " Less or equal
+                  gs_condtab-opera = 'LE'.
+                WHEN 'CP'.  " Pattern matching (LIKE)
+                  gs_condtab-opera = 'LK'.
+                WHEN 'NP'.  " Not like
+                  gs_condtab-opera = 'NP'.
+                WHEN OTHERS.
+                  CONTINUE.  " Skip unknown operators
+              ENDCASE.
+
+            ELSEIF ls_selection-sign = 'E'.  " Exclude case
+              CASE ls_selection-optio.
+                WHEN '' OR 'EQ'.  " Not equal to
+                  gs_condtab-opera = 'NE'.
+                WHEN 'NE'.  " Equal to
+                  gs_condtab-opera = 'EQ'.
+                WHEN 'GT'.  " Less or equal
+                  gs_condtab-opera = 'LE'.
+                WHEN 'GE'.  " Less than
+                  gs_condtab-opera = 'LT'.
+                WHEN 'LT'.  " Greater or equal
+                  gs_condtab-opera = 'GE'.
+                WHEN 'LE'.  " Greater than
+                  gs_condtab-opera = 'GT'.
+                WHEN 'CP'.  " Not like
+                  gs_condtab-opera = 'NP'.
+                WHEN 'NP'.  " Pattern matching
+                  gs_condtab-opera = 'LK'.
+                WHEN OTHERS.
+                  CONTINUE.  " Skip unknown operators
+              ENDCASE.
+            ENDIF.
+
+            gs_condtab-low = ls_selection-low.
+
+          ELSE.  " Both LOW and HIGH values are provided
+
+            IF ls_selection-sign = 'I'.  " Include case
+              CASE ls_selection-optio.
+                WHEN 'BT' OR ''.  " Between
+                  gs_condtab-opera = 'BT'.
+                WHEN 'NB'.  " Not Between
+                  gs_condtab-opera = 'NB'.
+              ENDCASE.
+
+            ELSEIF ls_selection-sign = 'E'.  " Exclude case
+              IF ls_selection-optio = 'NB'.  " Between
+                gs_condtab-opera = 'BT'.
+              ELSEIF ls_selection-optio = 'BT'.  " Not Between
+                gs_condtab-opera = 'NB'.
+              ENDIF.
+            ENDIF.
+
+            " Assign LOW and HIGH values
+            gs_condtab-low = ls_selection-low.
+            gs_condtab-high = ls_selection-high.
+
+          ENDIF.
+
+          " Append the populated condition to GT_CONDTAB
+          APPEND gs_condtab TO gt_condtab.
+
+        ENDLOOP.
+
+
+        " Call the FM to build the dynamic WHERE clause
+        CALL FUNCTION 'ZRH_DYNAMIC_WHERE_BUILD'
+          EXPORTING
+            dbtable         = p_tab
+          TABLES
+            condtab         = gt_condtab
+            where_clause    = gt_where_clauses
+          EXCEPTIONS
+            empty_condtab   = 1
+            no_db_field     = 2
+            unknown_db      = 3
+            wrong_condition = 4
+            OTHERS          = 99.
+
+        IF sy-subrc EQ 0.
+          " Execute the SELECT query with the generated WHERE clause
+          SELECT *
+            FROM (p_tab)
+            INTO CORRESPONDING FIELDS OF TABLE <dyn_table>
+            WHERE (gt_where_clauses).
+        ENDIF.
+
+      ENDIF.
+    ENDIF.
+
+  ELSE.
+    " Execute the SELECT query without any filters
+    SELECT *
+      FROM (p_tab)
+      INTO CORRESPONDING FIELDS OF TABLE <dyn_table>.
+  ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form layout_variant
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM layout_variant .
+
+  " Define a type for filter structures
+  TYPES: BEGIN OF ty_filter,
+           index   TYPE i,
+           include TYPE lvc_s_filt.
+  TYPES END OF ty_filter.
+
+  " Declare necessary data variables
+  DATA: lv_prog      TYPE string,
+        ls_ltdx      TYPE ltdx,
+        v_varkey     TYPE ltdxkey,
+        it_fcat      TYPE STANDARD TABLE OF ltdxdata,
+        it_sort_info TYPE STANDARD TABLE OF ltdxdata,
+        t_filters    TYPE TABLE OF ty_filter,
+        s_filters    TYPE ty_filter.
+
+  " To handle layout and field catalog configuration
+  DATA: lt_fcat_def TYPE kkblo_t_fieldcat,
+        lt_fcat     TYPE kkblo_t_fieldcat,
+        ls_layout   TYPE kkblo_layout.
+
+  " To retrieve metadata about the target table
+  DATA: lt_zones_types TYPE STANDARD TABLE OF dfies,
+        lv_message     TYPE string.
+
+  " To create dynamic structure and table types from the field catalog
+  DATA: r_type_struct TYPE REF TO cl_abap_structdescr,
+        r_type_table  TYPE REF TO cl_abap_tabledescr,
+        gt_comp       TYPE STANDARD TABLE OF abap_componentdescr WITH KEY name,
+        gs_comp       LIKE LINE OF gt_comp,
+        r_data_tab    TYPE REF TO data,
+        r_data_str    TYPE REF TO data.
+
+  " To manipulate data after variant and layout
+  FIELD-SYMBOLS: <fs_wa>  TYPE any,
+                 <dyn_wa> TYPE any.
+
+  " To handle sorting based on variant's sort information
+  DATA: t_fields TYPE abap_sortorder_tab,
+        ls_field TYPE abap_sortorder.
+
+  " Build the program name dynamically
+  CONCATENATE 'SAPLSE16N' p_tab INTO lv_prog.
+
+  " Fetch layout variant information
+  SELECT SINGLE * FROM ltdx INTO ls_ltdx
+    WHERE relid = 'LT'
+    AND report  = lv_prog
+    AND variant = p_mef.
+
+  IF sy-subrc = 0.
+
+    " Move corresponding fields from ls_ltdx to v_varkey
+    MOVE-CORRESPONDING ls_ltdx TO v_varkey.
+
+    " Fetch layout fields and sort info for the variant
+    CALL FUNCTION 'LT_DBDATA_READ_FROM_LTDX'
+      EXPORTING
+        i_tool       = 'LT'
+        is_varkey    = v_varkey
+      TABLES
+        t_dbfieldcat = it_fcat
+        t_dbsortinfo = it_sort_info.
+
+    IF sy-subrc = 0.
+
+      " Collect field catalog data
+      LOOP AT it_fcat ASSIGNING FIELD-SYMBOL(<fs_fcat_base>).
+        COLLECT VALUE kkblo_fieldcat( fieldname = <fs_fcat_base>-key1 )
+                INTO lt_fcat_def.
+      ENDLOOP.
+
+      " Load layout configuration
+      DATA(ls_key) = CORRESPONDING disvariant( ls_ltdx ).
+      CALL FUNCTION 'LT_FC_LOAD'
+        EXPORTING
+          is_variant          = ls_key
+          i_tabname           = '1'
+        IMPORTING
+          et_fieldcat         = lt_fcat
+        CHANGING
+          cs_layout           = ls_layout
+          ct_default_fieldcat = lt_fcat_def.
+
+      IF sy-subrc = 0.
+
+        " Remove fields flagged as 'NO_OUT' from the layout
+        LOOP AT it_fcat ASSIGNING <fs_fcat_base>
+          WHERE param = 'NO_OUT' AND value = 'X'.
+          DELETE lt_fcat WHERE fieldname = <fs_fcat_base>-key1.
+        ENDLOOP.
+
+        " Sort fields by position
+        SORT lt_fcat BY col_pos.
+
+      ENDIF.
+
+    ENDIF.
+
+    " Retrieve metadata about the target table
+    CALL FUNCTION 'DDIF_NAMETAB_GET'
+      EXPORTING
+        tabname        = p_tab
+      TABLES
+        dfies_tab      = lt_zones_types
+      EXCEPTIONS
+        not_found      = 1
+        internal_error = 2
+        OTHERS         = 3.
+
+    " Handle exceptions when fetching table metadata
+    IF sy-subrc <> 0.
+      CASE sy-subrc.
+        WHEN 1. lv_message = 'Table not found.'.
+        WHEN 2. lv_message = 'Internal error occurred.'.
+        WHEN OTHERS. lv_message = 'Unknown error occurred.'.
+      ENDCASE.
+      WRITE: / lv_message.
+      EXIT.
+    ENDIF.
+
+    " Create dynamic structure and table types from the field catalog
+    LOOP AT lt_fcat INTO DATA(ls_fcat).
+      gs_comp-name = ls_fcat-fieldname.
+      READ TABLE lt_zones_types INTO DATA(ls_zones_types)
+        WITH KEY fieldname = gs_comp-name.
+      IF ls_zones_types-datatype EQ 'DATS'.
+        gs_comp-type ?= cl_abap_elemdescr=>describe_by_name( 'ZDATE10' ).
+      ELSE.
+        gs_comp-type ?= cl_abap_elemdescr=>describe_by_name( ls_zones_types-rollname ).
+      ENDIF.
+      APPEND gs_comp TO gt_comp.
+    ENDLOOP.
+
+    " Create structure and table types dynamically
+    TRY.
+        r_type_struct = cl_abap_structdescr=>create( p_components = gt_comp ).
+      CATCH cx_sy_struct_creation.
+    ENDTRY.
+
+    TRY.
+        r_type_table = cl_abap_tabledescr=>create( r_type_struct ).
+      CATCH cx_sy_table_creation.
+    ENDTRY.
+
+    " Create and assign runtime objects
+    CREATE DATA: r_data_tab TYPE HANDLE r_type_table,
+                 r_data_str TYPE HANDLE r_type_struct.
+
+    ASSIGN: r_data_tab->* TO <fs_table>,
+            r_data_str->* TO <fs_wa>.
+
+    " Copy data into the dynamic structure
+    LOOP AT <dyn_table> ASSIGNING <dyn_wa>.
+      CLEAR <fs_wa>.
+      MOVE-CORRESPONDING <dyn_wa> TO <fs_wa>.
+      APPEND <fs_wa> TO <fs_table>.
+    ENDLOOP.
+
+    " Handle sorting based on variant's sort information
+    IF <fs_table> IS NOT INITIAL AND it_sort_info[] IS NOT INITIAL.
+      LOOP AT it_sort_info INTO DATA(l_sort).
+        CASE l_sort-param.
+          WHEN 'UP'.
+            CHECK l_sort-value EQ 'X'.
+            ls_field-name = l_sort-key1.
+            APPEND ls_field TO t_fields.
+          WHEN 'DOWN'.
+            CHECK l_sort-value EQ 'X'.
+            ls_field-name = l_sort-key1.
+            ls_field-descending = 'X'.
+            APPEND ls_field TO t_fields.
+        ENDCASE.
+      ENDLOOP.
+
+      " Perform the sorting
+      SORT <fs_table> BY (t_fields).
+    ENDIF.
+
+  ENDIF.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form format_data
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM format_data .
+
+  DATA: lt_fieldinfo TYPE dfies_tab,
+        ls_fieldinfo TYPE dfies,
+        lv_date      TYPE string,
+        lv_sdec      TYPE string,
+        lv_sint      TYPE string,
+        lv_n_to_s    TYPE string.
+
+  " Get field information from the target table
+  CALL FUNCTION 'DDIF_FIELDINFO_GET'
+    EXPORTING
+      tabname        = p_tab
+      langu          = sy-langu
+    TABLES
+      dfies_tab      = lt_fieldinfo
+    EXCEPTIONS
+      not_found      = 1
+      internal_error = 2
+      OTHERS         = 3.
+
+  IF sy-subrc <> 0.
+    MESSAGE 'Error fetching field information' TYPE 'E'.
+    EXIT.
+  ENDIF.
+
+  " Format data dates and numbers
+  LOOP AT <fs_table> ASSIGNING FIELD-SYMBOL(<fs_row>).
+    LOOP AT lt_fieldinfo INTO ls_fieldinfo.
+
+      ASSIGN COMPONENT ls_fieldinfo-fieldname OF STRUCTURE <fs_row> TO FIELD-SYMBOL(<fs_value>).
+
+      IF sy-subrc = 0 AND <fs_value> IS NOT INITIAL.
+
+        " Format date YYYY-MM-DD
+        IF ls_fieldinfo-datatype EQ 'DATS'.
+
+          IF <fs_value> CS '-' OR <fs_value> CS '.'.
+            REPLACE ALL OCCURRENCES OF '.' IN <fs_value> WITH ''.
+            REPLACE ALL OCCURRENCES OF '-' IN <fs_value> WITH ''.
+          ENDIF.
+          lv_date = <fs_value>(4) && '-' && <fs_value>+4(2) && '-' && <fs_value>+6(2).
+          <fs_value> = lv_date.
+
+        ENDIF.
+
+      ENDIF.
+
+    ENDLOOP. " AT lt_fieldinfo
+  ENDLOOP. " AT <fs_table>
+
+  " Print a message to confirm the operation completed
+  WRITE 'hello'.
+
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*& Form upload_csv
+*&---------------------------------------------------------------------*
+*& text
+*&---------------------------------------------------------------------*
+*& -->  p1        text
+*& <--  p2        text
+*&---------------------------------------------------------------------*
+FORM upload_csv .
+
+  DATA: iout          TYPE TABLE OF string,
+        xout          TYPE string,
+        help          TYPE string,
+        lt_table_data TYPE REF TO data.
+
+  FIELD-SYMBOLS: <fs_line>  TYPE any,
+                 <fs_field> TYPE any.
+
+  " Loop through the table data to build CSV lines.
+  LOOP AT <fs_table> ASSIGNING <fs_line>.
+    CLEAR xout.
+    DO.
+      ASSIGN COMPONENT sy-index OF STRUCTURE <fs_line> TO <fs_field>.
+      IF sy-subrc <> 0.
+        EXIT.
+      ENDIF.
+      IF sy-index = 1.
+        xout = <fs_field>.
+      ELSE.
+        help = <fs_field>.
+        CONCATENATE xout help INTO xout SEPARATED BY ','.
+      ENDIF.
+    ENDDO.
+    APPEND xout TO iout.
+  ENDLOOP.
+
+  " Upload the csv file to AL11
+  OPEN DATASET path_file FOR OUTPUT IN TEXT MODE ENCODING DEFAULT.
+  LOOP AT iout INTO DATA(siout).
+    TRANSFER siout TO path_file.
+  ENDLOOP.
+  CLOSE DATASET path_file.
+
+ENDFORM.

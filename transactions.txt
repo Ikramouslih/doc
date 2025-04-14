@@ -1,0 +1,117 @@
+How to name OT > FI/W/TRIG : <description>
+
+host file : 
+C:\Windows\System32\drivers\etc
+
+
+su10 : users
+su01 : débloque/bloquer user
+
+SEGW : manage odata 
+/UI2/FLP : Fiori launch pad
+
+so10 : create doc text
+
+
+vf02 : factures	
+
+
+CATEGORIE DE MESSAGES:
+TRANS : NACE
+the thing that links a programme to a form, 
+so when we execute a facture it knows what program to execute (instead of executing it from a se38)
+any facture/form needs a categorie de message to be executed 
+Trans: nace => conditions pilotage messages
+If you have the the categorie de message, click on positionner and paste CM, and execute, it will show the program and the form related to that CM
+
+
+DEBUG A SMARTFORM :
+TRANS : SMARTFORMS
+i have the smart form's name, i executed, get the function module and open it,
+you get a program with a global init, double click on it
+you get the program with the form's routine and logic, you can debug there
+
+
+TRANS : sost => to visualize emails
+
+
+
+FIND A STRING IN CODE (could be name of a form, function module...)
+IF CAN BE A PROGRAM OR A FM /
+TRANS : code_scanner => if it s an MF 
+	package z_dev
+	chaine : string that we want  
+TRANS : se38 => if its a prog 
+	se38 => write the string in prog => utilitaire - rech in source code 
+
+
+
+TRANS: SM50 
+is used to monitor and manage work processes. In the work process overview, you can:
+• End an ABAP program that is running.
+• Debug an ABAP program that is running.
+• Cancel a process (with or without core) – long running jobs
+• End a session
+• Activate/deactivate the restart option after an error
+• Execute various functions for the process trace	
+
+
+TRANS: sp01  spool where we see the impriminted docs
+
+  
+BREAK takes u to debbuger directly 
+DO ENDDO runs on the background, so sm50 => cocher my prog => administration => prog => debuggage
+	
+
+
+TRANS :  SE93 to find a transaction's program
+enter the transaction code
+The next screen will display the details of the transaction, including:
+The Program field, which shows the name of the program associated with the transaction.
+Alternatively, it might show that the transaction is linked to a report or a screen.
+
+
+
+TRANS : SE24 to build a class
+
+TRANS : WUI opens CRM
+
+TRANS : se10 les OTs et les workbenchs
+
+TRANS : Create transaction / SE93 you give transaction, it gives program
+
+TRANS : sm36/sm37 create a visualise jobs
+
+TRANS : st22 visualise the details about the dump and where in the code (aujourd'hui => extrait code)
+
+TRANS : se91 POO approach to error messages, just enter and write (Z(module) => ex : ZSD) to see if one already exists or not, click on marqué in a new line write and save.
+
+TRANS : CG3Z => for uploading a file in the AL11 directory (BIN file) 	
+	CG3Y => for dowloading
+	SE37 + EPS_DELETE_FILE + execute => DELETE a file from AL11
+
+TRANS : su24 => give transaction get obj d'autorisation : Vise versa
+TRANS : suim => get roles by user, transaction, profile...
+TRANS : su21 => gestion des objs d'autorisation 
+
+TRANS : pfcg => create/manage role   	
+TRANS : su53 => anomalie / obj d'autorisation ma	nquant (used if you failed to access smtg bc of lacking of a role)
+TRANS : su56 => opposite of su53, you see objs that u passed through in last action 
+
+TRANS : STAUTHTRACE => trace authorization objects while doing actions on the system
+
+TRANS : shd0 => personnalize screens (visibility of elements, required fields...)
+
+TRANS : SE03 => fin all the OTs that include an object
+
+TRANS : SE71 => sapscripts
+Prog a executer : RSTXSCRP => export/import a sap script
+
+TRANS : se19 to see badi definitions
+TRANS : SE18 to create implements
+TRANS : SE80 to locate any object
+
+TRANS : se51 progam dynpros
+
+
+Trans : stms transport des ots

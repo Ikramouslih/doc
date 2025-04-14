@@ -1,0 +1,34 @@
+" ZPROG_IMO_LYDEC_FORMALV
+" description : a window will show if we press on f4, where we can choose where to put the file instead of hardcoding the path.
+
+
+" in screen - function that opens the window
+SELECTION-SCREEN BEGIN OF BLOCK c WITH FRAME.
+  PARAMETERS : p_file TYPE string MODIF ID pf.
+SELECTION-SCREEN END OF BLOCK c.
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR p_file.
+  CALL METHOD cl_gui_frontend_services=>directory_browse
+    CHANGING
+      selected_folder      = p_file
+    EXCEPTIONS
+      cntl_error           = 1
+      error_no_gui         = 2
+      not_supported_by_gui = 3
+      OTHERS               = 4.
+
+" in f0 - exporting
+TABLES : ekpo, ekko.
+DATA : gt_data TYPE TABLE OF zstr_imo_lydec_formalv.
+ SELECT ko~ebeln, ebelp, ko~aedat
+    FROM ekpo AS po
+    JOIN ekko AS ko
+    ON po~ebeln = ko~ebeln
+    INTO TABLE @gt_data.
+
+cl_icf_csv=>request_for_write_into_csv(
+      it_data            = gt_data
+      iv_init_dir        = p_file
+      iv_hdr_struct_name = 'zstr_imo_lydec_formalv'
+      iv_file_name       = 'exported_file2.csv'
+  ).

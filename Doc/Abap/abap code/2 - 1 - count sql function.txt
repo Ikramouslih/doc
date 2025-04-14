@@ -1,0 +1,29 @@
+TABLES : ekpo, ztab_detail.
+
+TYPES : BEGIN OF ty_count,
+          matnr TYPE ekpo-matnr,
+          count TYPE i,
+        END OF ty_count.
+
+DATA: gt_count TYPE TABLE OF ty_count,
+      gs_count TYPE          ty_count.
+
+*******************************************
+
+SELECT        matnr, COUNT( * )
+  FROM        ekpo
+  WHERE       ebeln IN @s_ebeln
+  GROUP BY    matnr
+  INTO TABLE  @gt_count.
+
+DATA : lv_message TYPE string.
+DATA : lv_count   TYPE string.
+
+  LOOP AT gt_count INTO gs_count.
+
+    lv_count = gs_count-count.
+
+    CONCATENATE gs_count-matnr ':' lv_count INTO lv_message SEPARATED BY space.
+    WRITE / lv_message.
+
+  ENDLOOP.

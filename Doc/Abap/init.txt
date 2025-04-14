@@ -1,0 +1,14 @@
+INCLUDE : zinc_imo_ _top,
+          zinc_imo_ _scr,
+          zinc_imo_ _f01.
+
+INITIALIZATION.
+
+START-OF-SELECTION.
+
+  PERFORM : get_data.
+  PERFORM : .
+  PERFORM : .
+  PERFORM : .
+
+END-OF-SELECTION.

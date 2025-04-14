@@ -1,0 +1,8 @@
+=> Eclipse : 
+transport organizer // liberer tache puis OT (fix warning and errors)
+
+=> CLOUD SYS :
+impoter details de collection // import collection details => pour visualiser l'OT
+Gestion des roles irium // maintain business roles => pour créer un role + ajouter le business catalogue + affecter des users au role
+custo : Export software collection => pour transporter les vignettes ou autre
+qas : Import software collection => pour importer les vignettes ou autre

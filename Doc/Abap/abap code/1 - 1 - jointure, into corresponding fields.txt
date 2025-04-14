@@ -1,0 +1,7 @@
+    SELECT po~ebeln, po~ebelp, po~matnr, ko~bukrs, ko~bsart
+      FROM       ekpo AS po 
+      INNER JOIN ekko AS ko
+      ON         po~ebeln = ko~ebeln
+      INTO CORRESPONDING FIELDS OF TABLE @gt_ekpo_ekko
+      WHERE      po~ebeln EQ @p_ebeln
+      AND        po~ebelp IN @s_ebelp.

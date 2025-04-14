@@ -1,0 +1,47 @@
+PS : the numeric values that are stored in the database tables, by default dont have thousands seperators and decimal commas
+so this exercice is just for fun.
+
+
+Algo to clean numbers from thousands seperators and decimal commas
+
+*        " Format decimals without thousands seperators and replace decimal comma with a dot
+*        ELSEIF ls_fieldinfo-decimals <> 0.
+*
+*          lv_sdec = frac( <fs_value> ).
+*          lv_sint = trunc( <fs_value> ).
+*
+*          REPLACE ALL OCCURRENCES OF '.' IN lv_sint WITH ''.
+*          REPLACE ALL OCCURRENCES OF ',' IN lv_sint WITH ''.
+*
+*          REPLACE ALL OCCURRENCES OF '.' IN lv_sdec WITH ''.
+*          REPLACE ALL OCCURRENCES OF ',' IN lv_sdec WITH ''.
+*          SHIFT lv_sdec LEFT DELETING LEADING '0'.
+*
+*          CONCATENATE lv_sint lv_sdec INTO lv_n_to_s SEPARATED BY '.'.
+*          CONDENSE lv_n_to_s NO-GAPS.
+*
+*          <fs_value> = lv_n_to_s.
+*
+*          CLEAR lv_sdec.
+*          CLEAR lv_sint.
+*          CLEAR lv_n_to_s.
+*
+*        " Format ints without thousands seperators
+*        ELSEIF ls_fieldinfo-decimals EQ 0.
+*
+*          " needs to be a numeric value
+*          IF ls_fieldinfo-datatype EQ 'NUMC'
+*            OR ls_fieldinfo-datatype EQ 'DEC'
+*             OR ls_fieldinfo-datatype EQ 'INT1'
+*             OR ls_fieldinfo-datatype EQ 'INT2'
+*             OR ls_fieldinfo-datatype EQ 'INT4'
+*             OR ls_fieldinfo-datatype EQ 'INT8'
+*             OR ls_fieldinfo-datatype EQ 'PREC'.
+*
+*            lv_n_to_s = <fs_value>.
+*            REPLACE ALL OCCURRENCES OF '.' IN lv_n_to_s WITH ''.
+*            REPLACE ALL OCCURRENCES OF ',' IN lv_n_to_s WITH ''.
+*            CONDENSE lv_n_to_s NO-GAPS.
+*
+*          ENDIF.
+*

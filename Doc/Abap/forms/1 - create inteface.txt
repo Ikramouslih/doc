@@ -1,0 +1,14 @@
+- importations : * contains variables exported from a program. 
+		 * EX: GT_EKPO	 TYPE   ZLTAB_IMO_FACT_LYDEC_DYNAMIC	
+		 * its type should be a line type made with a structure.
+
+- Données globales : * here we declare variables without importing them from another program 
+		     * it s local to the form
+		     * EX : GT_VBRP	TYPE	TABLE OF TY_VBRP
+
+- Initialisation du code : * here we can write an integrated program 
+			   * here we fill the local variable of the form (like gt_vbrp above) with a request
+			   * EX : select VBELN, POSNR, FKIMG, PRSDT
+ 			           FROM VBRP
+  				   INTO CORRESPONDING FIELDS OF TABLE @gt_vbrp
+  				   UP TO 20 rows.

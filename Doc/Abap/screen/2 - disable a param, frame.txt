@@ -1,0 +1,14 @@
+SELECTION-SCREEN BEGIN OF BLOCK a WITH FRAME.
+
+  PARAMETERS : p_cin  TYPE  ztab_imo_info-cin          OBLIGATORY,
+               p_nom  TYPE  ztab_imo_info-nom_complet.
+ 
+SELECTION-SCREEN END OF BLOCK a.
+
+AT SELECTION-SCREEN OUTPUT.
+LOOP AT SCREEN.
+    IF screen-name = 'P_NOM'.
+      screen-input = 0.
+    ENDIF.
+      MODIFY SCREEN.
+ENDLOOP.

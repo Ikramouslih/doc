@@ -1,0 +1,77 @@
+"ZPROG_IMO_EXOINFO_F4_DISABLE 
+"description : 2 params cin with search help and nom disabled and auto filled when executed. 
+
+TABLES : ztab_imo_info. " MANDANT, CIN, NOM_COMPLET
+
+" SCREEN PARAMS
+SELECTION-SCREEN BEGIN OF BLOCK a WITH FRAME.
+  PARAMETERS : p_cin TYPE ztab_imo_info-cin OBLIGATORY,
+               p_nom TYPE ztab_imo_info-nom_complet.
+SELECTION-SCREEN END OF BLOCK a.
+
+" F4 SETUP
+DATA:
+     gt_data        TYPE TABLE OF ztab_imo_info, " data source (cin + name)
+     gt_return_data TYPE TABLE OF ddshretval,    " data returned/printed (cin)
+     gs_return_data TYPE          ddshretval.    " str to manipulate the table returned
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR p_cin.
+  CALL FUNCTION 'F4IF_INT_TABLE_VALUE_REQUEST'
+    EXPORTING
+      retfield    = 'CIN'           " field in data source
+      dynprofield = 'P_CIN'         " param where to put the search help
+      dynpprog    = sy-cprog
+      dynpnr      = sy-dynnr
+      value_org   = 'S'
+    TABLES
+      value_tab   = gt_data         " data source 
+      return_tab  = gt_return_data. " data returned/printed (cin)
+
+" Disable screen
+AT SELECTION-SCREEN OUTPUT.
+      LOOP AT SCREEN.
+        IF screen-name = 'P_NOM'.
+          screen-input = 0.
+        ENDIF.
+        MODIFY SCREEN.
+      ENDLOOP.
+
+*****************************************************
+DATA : gs_info        TYPE          ztab_imo_info.      " to fill the table
+
+  gs_info-cin         = 'BK888881'.
+  gs_info-nom_complet = 'MOUSLIH Ikram'.
+  INSERT INTO ztab_imo_info VALUES gs_info.
+  CLEAR gs_info.
+
+  gs_info-cin         = 'BK888882'.
+  gs_info-nom_complet = 'LEUELEU WALID'.
+  INSERT INTO ztab_imo_info VALUES gs_info.
+  CLEAR gs_info.
+
+  gs_info-cin         = 'BK888883'.
+  gs_info-nom_complet = 'ETTAHIRI Aziza'.
+  INSERT INTO ztab_imo_info VALUES gs_info.
+  CLEAR gs_info.
+
+DATA :
+       gs_data        TYPE          ztab_imo_info, 
+       gt_data_cin    TYPE TABLE OF ztab_imo_info. " table if value was manually entered
+
+  " if value was chosen through F4
+  SELECT cin, nom_complet
+    FROM ztab_imo_info
+    INTO CORRESPONDING FIELDS OF TABLE @gt_data.
+
+  " if value was manually entered
+  SELECT cin, nom_complet
+    FROM ztab_imo_info
+    INTO CORRESPONDING FIELDS OF TABLE @gt_data_cin
+    WHERE cin EQ @p_cin.
+
+
+  LOOP AT gt_data_cin INTO gs_data.
+
+    READ TABLE gt_return_data INTO gs_return_data WITH KEY fieldval = gs_data-cin.
+    p_nom = gs_data-nom_complet.
+
+  ENDLOOP.

@@ -1,0 +1,44 @@
+" zprog_imo_test
+
+TABLES : ekpo, ekko.
+
+TYPES: BEGIN OF ty_ekpo_ekko,
+         ebeln TYPE ekpo-ebeln,
+         ebelp TYPE ekpo-ebelp,
+         matnr TYPE ekpo-matnr,
+         bukrs TYPE ekko-bukrs,
+         bsart TYPE ekko-bsart,
+       END OF ty_ekpo_ekko.
+
+DATA: gt_ekpo_ekko TYPE TABLE OF ty_ekpo_ekko,
+      gs_ekpo_ekko TYPE          ty_ekpo_ekko.
+
+****************************************
+
+PARAMETERS     : p_ebeln  TYPE  ekpo-ebeln  OBLIGATORY.
+SELECT-OPTIONS : s_ebelp  FOR   ekpo-ebelp.
+
+****************************************
+SELECT po~ebeln, po~ebelp, po~matnr, ko~bukrs, ko~bsart
+   FROM                   ekpo AS po
+   INNER JOIN             ekko AS ko
+   ON                     po~ebeln = ko~ebeln
+   INTO CORRESPONDING FIELDS OF TABLE @gt_ekpo_ekko
+   WHERE                  po~ebeln EQ @p_ebeln
+   AND                    po~ebelp IN @s_ebelp.
+
+DATA : lv_message TYPE string.
+DATA : lv_cmpt TYPE n VALUE 0.
+
+SORT gt_ekpo_ekko BY ebeln.
+
+LOOP AT gt_ekpo_ekko INTO gs_ekpo_ekko.
+
+  ADD 1 TO lv_cmpt.
+
+  AT END OF ebeln.
+    WRITE : /'commande', gs_ekpo_ekko-ebeln, 'nbr', lv_cmpt.
+    CLEAR : lv_cmpt.
+  ENDAT.
+
+ENDLOOP.

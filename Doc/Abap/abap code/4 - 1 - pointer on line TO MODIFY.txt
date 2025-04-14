@@ -1,0 +1,5 @@
+READ TABLE  itab  ASSIGNING FIELD-SYMBOL(<fs_data>) WITH KEY fieldname = 'zonename'.
+IF sy-subrc EQ 0.
+  <fs_data>-outputlen = 100.
+  <fs_data>-emphasize = 'C611'.
+ENDIF.

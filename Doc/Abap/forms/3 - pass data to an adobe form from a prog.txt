@@ -1,0 +1,37 @@
+DATA : lwa_parameters TYPE sfpoutputparams,
+       lv_res         TYPE sfpjoboutput,
+       lv_funcname    TYPE funcname.
+
+  CALL FUNCTION 'FP_JOB_OPEN'
+    CHANGING
+      ie_outputparams = lwa_parameters 			" Indicates that this job concerns an sfp
+    EXCEPTIONS
+      cancel          = 1
+      usage_error     = 2
+      system_error    = 3
+      internal_error  = 4
+      OTHERS          = 5.
+
+  CALL FUNCTION 'FP_FUNCTION_MODULE_NAME'
+    EXPORTING
+      i_name     = 'ZFORM_IMO_FACT_LYDEC_DYNAMIC'	" the name of our form
+    IMPORTING
+      e_funcname = lv_funcname.        			" Program exports the name of the form and imports the form's ID
+
+  CALL FUNCTION lv_funcname            			" Calling the form with a data source called gt_data
+    EXPORTING
+      gt_ekpo = gt_data.				" (gt_data TYPE TABLE OF zstr_imo_lydec_formalv) 
+      " IMPORTANT : - gt_ekpo needs to be declared in the importation section in the interface of the form
+      "		    - in importation section, it needs to be declared as a table type that was made with the same structure 
+      "		    - (zstr_imo_lydec_formalv in this case)
+      "		    - it needs to have the same name in the importation section (gt_ekpo in this case)
+      "		    - we can export multiple variables
+
+  CALL FUNCTION 'FP_JOB_CLOSE'
+    IMPORTING
+      e_result       = lv_res
+    EXCEPTIONS
+      usage_error    = 1
+      system_error   = 2
+      internal_error = 3
+      OTHERS         = 4.

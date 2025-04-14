@@ -1,0 +1,2 @@
+PARAMETERS     : p_ebeln  TYPE  ekpo-ebeln  OBLIGATORY.
+SELECT-OPTIONS : s_ebelp  FOR   ekpo-ebelp.

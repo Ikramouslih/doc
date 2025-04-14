@@ -1,0 +1,56 @@
+@EndUserText.label : 'Pour les logs IRIUM'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zdb_irium_logs {
+
+  key client          : abap.clnt not null;
+  key id     	      : sysuuid_x16 not null;
+  key societe         : abap.char(4) not null;
+  key nom_fichier     : abap.char(20) not null;
+  key piece_reference : abap.char(20) not null;
+  key piece_comptable : abap.char(20) not null;
+  key poste           : abap.char(5) not null;
+  message             : abap.char(200);
+  sap_createddatetime : abp_creation_tstmpl;
+  sap_createdbyuser   : syuname;
+  sap_lastchangetime  : abp_creation_tstmpl;
+
+}
+
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'CDS pour les logs IRIUM'
+@Metadata.ignorePropagatedAnnotations: true
+define root view entity ZIRIUM_LOGS_CDS as select from zdb_irium_logs
+{
+    key id as Id,
+    key societe as Societe,
+    key nom_fichier as Nom_fichier,
+    key piece_reference as Piece_reference,
+    key piece_comptable as Piece_comptable,
+    key poste as Poste,
+    message as Message,
+    @Semantics.systemDateTime.createdAt: true
+    sap_createddatetime as SAP_CreatedDateTime,
+    @Semantics.user.createdBy: true
+    sap_createdbyuser as SAP_CreatedByUser,
+    sap_lastchangetime as LastChangedAt
+    
+}
+
+managed implementation in class zbp_irium_logs_cds unique;
+//strict ( 2 );
+
+define behavior for ZIRIUM_LOGS_CDS //alias <alias_name>
+persistent table zdb_irium_logs
+lock master
+//authorization master ( instance )
+//etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) sap_uuid;
+}

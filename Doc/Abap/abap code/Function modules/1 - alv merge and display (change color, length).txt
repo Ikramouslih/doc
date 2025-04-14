@@ -1,0 +1,48 @@
+" ZPROG_IMO_ALV_MERGE_DISPLAY
+" description : print a table with alv, change color and length of column EBELEN
+
+REUSE_ALV_FIELDCATALOG_MERGE:
+This part prepares the blueprint for how our table will look. It checks the structure of the data we want to show and figures out things like column names, widths, and data types. Think of it as setting up the design of our table.
+
+REUSE_ALV_GRID_DISPLAY:
+Once we have the blueprint ready, we use this to actually put the data on the screen. It takes the blueprint and the actual data we want to show and displays it neatly in a table format.
+
+******************************************************
+
+TABLES : ekpo.
+
+" we used specific str bc merge uses only specific strs
+DATA : gt_ekpo  TYPE TABLE OF  zstr_imo_alvekpo,
+       gs_ekpo  TYPE	       zstr_imo_alvekpo.
+
+SELECT-OPTIONS : s_ebeln FOR ekpo-ebeln OBLIGATORY,
+                 s_ebelp FOR ekpo-ebelp.
+
+SELECT ebeln, ebelp, menge
+  FROM 		ekpo
+  INTO TABLE    @gt_ekpo
+  WHERE 	ebeln IN @s_ebeln
+  AND   	ebelp IN @s_ebelp.
+
+DATA: gt_fieldcat  TYPE  slis_t_fieldcat_alv.
+ 
+CALL FUNCTION 'REUSE_ALV_FIELDCATALOG_MERGE'
+    EXPORTING
+      i_structure_name = 'ZSTR_IMO_ALVEKPO'
+    CHANGING
+      ct_fieldcat      = gt_fieldcat.
+
+" changes colomn size and color
+READ TABLE gt_fieldcat ASSIGNING FIELD-SYMBOL(<fs_data>) WITH KEY fieldname = 'EBELN'.
+IF sy-subrc EQ 0.
+  <fs_data>-outputlen = 100.
+  <fs_data>-emphasize = 'C611'.
+ENDIF.
+
+CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+  EXPORTING
+    it_fieldcat = gt_fieldcat
+  TABLES
+    t_outtab    = gt_ekpo.
+
+

@@ -1,0 +1,5889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xfadata="http://www.xfa.org/schema/xfa-data/1.0/">
+ <element name="Form">
+  <complexType>
+   <sequence>
+    <element name="BillingDocumentNode" type="BillingDocumentNode"/>
+   </sequence>
+  </complexType>
+ </element>
+ <complexType name="BillingDocumentNode">
+  <sequence>
+   <element name="AbsltAccountingExchangeRate">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="9"/>
+      <fractionDigits value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AccountingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AcctgExchangeRateIsIndrctQtan">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BankBranch">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingDocumentCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingDocumentType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingDocumentTypeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingSDDocumentCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingSDDocumentCategoryName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CancelledBillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CompanyCodeCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DocumentReferenceID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="16"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ExchangeRateDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="ExemptionLetterDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="ExemptionLetterNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NumberOfSourceCurrencyUnits">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="9"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NumberOfTargetCurrencyUnits">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="9"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PaymentReference">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PrelimBillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PricingProcedure">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PurchaseOrderByCustomer">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="35"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesContract">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesOrganization">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesOrganizationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesSDDocumentCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesSDDocumentCategoryName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotGrssAmtAsText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1024"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotalGrossAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotalNetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotalTaxAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="VatDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="YY1_AAB_FORMATION_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_AAB_FORMATION_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_BCN_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_BCN_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_BCN_commande_inter_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_BCN_commande_inter_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Customfield_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Customfield_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Dontax_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Dontax_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_FORMATION_24_STA_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_FORMATION_24_STA_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Formation_header_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Formation_header_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_ICE_CEC_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_ICE_CEC_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_ICH_formation24_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_ICH_formation24_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_KNA_FORMATION_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_KNA_FORMATION_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_MOTANTTTC1_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_MOTANTTTC1_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_MontantHT1_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_MontantHT1_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_NBL_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_NBL_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Nom_Facture_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Nom_Facture_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Nom_client_SDBIL_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Nom_client_SDBIL_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_OKE_Dontax_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_OKE_Dontax_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_WLE_custom_field_b_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_WLE_custom_field_b_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YFA_FORMATION_HEAD_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YFA_FORMATION_HEAD_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_AER_NUMBER_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_AER_NUMBER_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_address_facture_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_address_facture_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_atest_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_atest_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_modedepaiementblf_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_modedepaiementblf_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montantHT_notedebi_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montantHT_notedebi_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montanttotal_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montanttotal_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_motanttva1_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_motanttva1_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_num_to_string_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="200"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_num_to_string_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_title_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_title_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_ville_facture_BDH">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_ville_facture_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_yy1_mbl_form_BDH">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_yy1_mbl_form_BDHF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="fulfil_date">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="BillToParty" type="BillToPartyNode"/>
+   <element name="Company" type="CompanyNode"/>
+   <element name="DownPaymentOverview" type="DownPaymentOverviewNode"/>
+   <element name="DownPayments">
+    <complexType>
+     <sequence>
+      <element name="BillingDownPayments" maxOccurs="unbounded" minOccurs="1" type="BillingDownPayments"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="GroupItems">
+    <complexType>
+     <sequence>
+      <element name="BillingDocumentGroupItemNode" maxOccurs="unbounded" minOccurs="0" type="BillingDocumentGroupItemNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="LegallyRequiredTexts">
+    <complexType>
+     <sequence>
+      <element name="LegallyRequiredTextNode" maxOccurs="unbounded" minOccurs="0" type="LegallyRequiredTextNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="PayerParty" type="PayerPartyNode"/>
+   <element name="PaymentMethod" type="PaymentMethodNode"/>
+   <element name="PaymentTerms" type="PaymentTermsNode"/>
+   <element name="PlantNode" type="PlantNode"/>
+   <element name="PricingConditions">
+    <complexType>
+     <sequence>
+      <element name="PricingConditionNode" maxOccurs="unbounded" minOccurs="1" type="PricingConditionNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="PricingTerms" type="PricingTermsNode"/>
+   <element name="CustomerProject" type="ProjectDetailsNode"/>
+   <element name="QRBillPayableBy" type="QRBillPayableBy"/>
+   <element name="QRBillPayableTo" type="QRBillPayableTo"/>
+   <element name="QRBillPrintDetails">
+    <complexType>
+     <sequence>
+      <element name="QRBillPrintDetails" maxOccurs="unbounded" minOccurs="1" type="QRBillPrintDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SEPA" type="SEPANode"/>
+   <element name="ServiceRecipientParty" type="ServiceRecipientPartyNode"/>
+   <element name="SIPTHeader" type="SIPTHeaderNode"/>
+   <element name="SIPTInvRetr">
+    <complexType>
+     <sequence>
+      <element name="SIPTInvRetrNode" maxOccurs="unbounded" minOccurs="1" type="SIPTInvRetrNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SIPTInvVat">
+    <complexType>
+     <sequence>
+      <element name="SIPTInvVatNode" maxOccurs="unbounded" minOccurs="1" type="SIPTInvVatNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SIPTInvWhVat">
+    <complexType>
+     <sequence>
+      <element name="SIPTInvWhVatNode" maxOccurs="unbounded" minOccurs="1" type="SIPTInvWhVatNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SIPTQRCode" type="SIPTQRCodeNode"/>
+   <element name="SoldToParty" type="SoldToPartyNode"/>
+   <element name="SupplierNode" type="SupplierNode"/>
+   <element name="TaxationTerms" type="TaxationTermsNode"/>
+   <element name="TextElements">
+    <complexType>
+     <sequence>
+      <element name="TextElementNode" maxOccurs="unbounded" minOccurs="1" type="TextElementNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="TimeExpense" type="TimeExpenseItemNode"/>
+   <element name="VATSummary">
+    <complexType>
+     <sequence>
+      <element name="VATSummaryNode" maxOccurs="unbounded" minOccurs="1" type="VATSummaryNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="VATSummaryNode">
+  <sequence>
+   <element name="CndnAmountInCocodeCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CndnAmountInCountryCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CndnBaseAmountInCountrCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CndnBaseamountInCocodeCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CompanyCodeCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValue">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionRateValue">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionRateValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CountryCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DocumentCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TargetTaxCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCodeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="TimeExpenseItemNode">
+  <sequence>
+   <element name="HasAggregationData">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal">
+    <complexType>
+     <sequence>
+      <element name="TimeExpenseItemSubTotalNode" maxOccurs="unbounded" minOccurs="0" type="TimeExpenseItemSubTotalNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="TimeExpenseItemSubTotalNode">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal2">
+    <complexType>
+     <sequence>
+      <element name="TimeExpenseItemSubTotal2Node" maxOccurs="unbounded" minOccurs="0" type="TimeExpenseItemSubTotal2Node"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="TimeExpenseItemSubTotal2Node">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal3">
+    <complexType>
+     <sequence>
+      <element name="TimeExpenseItemSubTotal3Node" maxOccurs="unbounded" minOccurs="0" type="TimeExpenseItemSubTotal3Node"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="TimeExpenseItemSubTotal3Node">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Items">
+    <complexType>
+     <sequence>
+      <element name="BillingDocumentItemNode" maxOccurs="unbounded" minOccurs="0" type="BillingDocumentItemNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="TextElementNode">
+  <sequence>
+   <element name="Language">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TextElement">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TextElementDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TextElementText">
+    <simpleType>
+     <restriction base="string"/>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="TaxationTermsNode">
+  <sequence>
+   <element name="CompanyVATRegistration">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CustomerICNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="11"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CustomerTINNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CustomerVATRegistration">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_BillToPtyGSTIdnNmbr">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="18"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_GSTIdentificationNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="18"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_ShipToPtyGSTIdnNmbr">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="18"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SupplierICNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="11"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxDepartureCountry">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxNumber0">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxNumber1">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxNumber2">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxNumber3">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxNumber4">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxNumber5">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="VATRegistrationCountryName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="VATRegistrationOrigin">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="VATRegistrationOriginName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SupplierNode">
+  <sequence>
+   <element name="AddressID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine1Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine2Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine3Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine4Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine5Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine6Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine7Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine8Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CompanyCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Country">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Person">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Region">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="RegionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="25"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SoldToPartyNode">
+  <sequence>
+   <element name="AddressID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine1Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine2Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine3Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine4Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine5Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine6Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine7Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine8Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Partner">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunction">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunctionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Person">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTQRCodeNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QRCodeIsVisible">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="QRCodeString">
+    <simpleType>
+     <restriction base="string"/>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTInvWhVatNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DisplayTaxRate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FootnoteReference">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetAmountInCoCodeCurrency">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxAmountInCoCodeCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCodeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="100"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotalGrossAmountInCoCodeCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTInvVatNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DisplayTaxRate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FootnoteReference">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetAmountInCoCodeCurrency">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseTaxCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxAmountInCoCodeCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCodeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="100"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotalGrossAmountInCoCodeCrcy">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTInvRetrNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ItemType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReturnReason">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReturnReasonName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTHeaderNode">
+  <sequence>
+   <element name="BilingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CurrencyName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DiscountAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ExternalInvoice">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="HiddenColumnList">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="InvoiceDiscountOnItem">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="IsReversed">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OriginalOrCopyPrintOut">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PTUniqueDocumentCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="70"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugeseInvoiceType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseCompComRegister">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseCompShareCapitalAmt">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="20"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseDeliveryDate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseInvoiceDate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseInvoiceNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseOriginalRefType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseOriglInvoiceDate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseOriglReftFromToDate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseSgntrCertificate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseSignaturePrintChars">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="7"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PortugueseSpecialDocOrigin">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ServiceRecipientPartyNode">
+  <sequence>
+   <element name="AddressID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine1Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine2Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine3Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine4Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine5Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine6Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine7Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine8Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Partner">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunction">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunctionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Person">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Region">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="RegionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="25"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="SEPANode">
+  <sequence>
+   <element name="BICNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="11"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BankName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IBAN">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="34"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PaymentDueDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="SEPAMandate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="35"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="QRBillPrintDetails">
+  <sequence>
+   <element name="AcceptancePointTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AccountPayabletoTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AdditionalInformationTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Amount">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="15"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AmountDisplayControl">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="AmountFixedTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Currency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CurrencyTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PayableByTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PaymentPartTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QRCodeImage">
+    <complexType>
+     <simpleContent>
+      <extension base="base64Binary">
+       <attribute ref="xfadata:contentType" default="image/jpeg"/>
+       <attribute ref="xfadata:transferEncoding" default="base64"/>
+      </extension>
+     </simpleContent>
+    </complexType>
+   </element>
+   <element name="QRIBAN">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="34"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QRReference">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="34"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReceiptTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReferenceNumberTitle">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="StructuredInformation">
+    <simpleType>
+     <restriction base="string"/>
+    </simpleType>
+   </element>
+   <element name="UnstructuredInformation">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="152"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="QRBillPayableTo">
+  <sequence>
+   <element name="City">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="35"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Country">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="HouseNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="HouseNumber1">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Name">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="70"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PostalCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Street">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Street1">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="35"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="QRBillPayableBy">
+  <sequence>
+   <element name="City">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="35"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Country">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="HouseNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="HouseNumber1">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Name">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="70"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PostalCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Street">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Street1">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="35"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ProjectDetailsNode">
+  <sequence>
+   <element name="CustomerProject">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CustomerProjectName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="EndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="ProjectManagerName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="StartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="ExpenseJournalEntries" type="ExpenseJournalEntryNode"/>
+   <element name="FixPriceJournalEntries" type="FixPriceJournalEntryNode"/>
+   <element name="PeriodicServiceJournalEntries" type="PeriodicServiceJournalEntryNode"/>
+   <element name="ServiceJournalEntries" type="ServiceJournalEntryNode"/>
+  </sequence>
+ </complexType>
+ <complexType name="ServiceJournalEntryNode">
+  <sequence>
+   <element name="HasAggregationData">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal">
+    <complexType>
+     <sequence>
+      <element name="ServiceJournalEntrySubTotalNode" maxOccurs="unbounded" minOccurs="0" type="ServiceJournalEntrySubTotalNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ServiceJournalEntrySubTotalNode">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal2">
+    <complexType>
+     <sequence>
+      <element name="ServiceJournalEntrySubTotal2Node" maxOccurs="unbounded" minOccurs="0" type="ServiceJournalEntrySubTotal2Node"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ServiceJournalEntrySubTotal2Node">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Details">
+    <complexType>
+     <sequence>
+      <element name="ServiceJournalEntryDetailsNode" maxOccurs="unbounded" minOccurs="0" type="ServiceJournalEntryDetailsNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ServiceJournalEntryDetailsNode">
+  <sequence>
+   <element name="BilledQuantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="15"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BilledQuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BilledQuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CostCtrActivityType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CostCtrActivityTypeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DocumentItemText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Employee">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="EmployeeFullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="LongText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="300"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Material">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="MaterialName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetPriceAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Personnel">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="8"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PostingDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="Project">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ProjectDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ServicesRenderedDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="TimesheetOvertimeCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TimesheetOvertimeCategoryText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WBSDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WBSElement">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WorkItemID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WorkItemName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PeriodicServiceJournalEntryNode">
+  <sequence>
+   <element name="HasAggregationData">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal">
+    <complexType>
+     <sequence>
+      <element name="PeriodicServiceJournalEntrySubTotalNode" maxOccurs="unbounded" minOccurs="0" type="PeriodicServiceJournalEntrySubTotalNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PeriodicServiceJournalEntrySubTotalNode">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal2">
+    <complexType>
+     <sequence>
+      <element name="PeriodicServiceJournalEntrySubTotal2Node" maxOccurs="unbounded" minOccurs="0" type="PeriodicServiceJournalEntrySubTotal2Node"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PeriodicServiceJournalEntrySubTotal2Node">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Details">
+    <complexType>
+     <sequence>
+      <element name="PeriodicServiceJournalEntryDetailsNode" maxOccurs="unbounded" minOccurs="0" type="PeriodicServiceJournalEntryDetailsNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PeriodicServiceJournalEntryDetailsNode">
+  <sequence>
+   <element name="DocumentItemText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="300"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Material">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="MaterialName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetPriceAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PostingDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="Project">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ProjectDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ServiceEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="ServiceStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WBSDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WBSElement">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WorkItemID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WorkItemName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="FixPriceJournalEntryNode">
+  <sequence>
+   <element name="HasAggregationData">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal">
+    <complexType>
+     <sequence>
+      <element name="FixPriceJournalEntrySubTotalNode" maxOccurs="unbounded" minOccurs="0" type="FixPriceJournalEntrySubTotalNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="FixPriceJournalEntrySubTotalNode">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal2">
+    <complexType>
+     <sequence>
+      <element name="FixPriceJournalEntrySubTotal2Node" maxOccurs="unbounded" minOccurs="0" type="FixPriceJournalEntrySubTotal2Node"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="FixPriceJournalEntrySubTotal2Node">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Details">
+    <complexType>
+     <sequence>
+      <element name="FixPriceJournalEntryDetailsNode" maxOccurs="unbounded" minOccurs="0" type="FixPriceJournalEntryDetailsNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="FixPriceJournalEntryDetailsNode">
+  <sequence>
+   <element name="BillingPlanBillingDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="DocumentItemText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="300"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Material">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="MaterialName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Project">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ProjectDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ExpenseJournalEntryNode">
+  <sequence>
+   <element name="HasAggregationData">
+    <simpleType>
+     <restriction base="boolean"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal">
+    <complexType>
+     <sequence>
+      <element name="ExpenseJournalEntrySubTotalNode" maxOccurs="unbounded" minOccurs="0" type="ExpenseJournalEntrySubTotalNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ExpenseJournalEntrySubTotalNode">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal2">
+    <complexType>
+     <sequence>
+      <element name="ExpenseJournalEntrySubTotal2Node" maxOccurs="unbounded" minOccurs="0" type="ExpenseJournalEntrySubTotal2Node"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ExpenseJournalEntrySubTotal2Node">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Details">
+    <complexType>
+     <sequence>
+      <element name="ExpenseJournalEntryDetailsNode" maxOccurs="unbounded" minOccurs="0" type="ExpenseJournalEntryDetailsNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ExpenseJournalEntryDetailsNode">
+  <sequence>
+   <element name="BilledQuantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="15"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BilledQuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BilledQuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CostCtrActivityType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CostCtrActivityTypeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DocumentDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="DocumentItemText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Employee">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="EmployeeFullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="GlobalCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="LongText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="300"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Material">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="MaterialName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OriginAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OriginAmountInOriginCurr">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OriginCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Personnel">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="8"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PostingDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="Project">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ProjectDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ServicesRenderedDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WBSDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WBSElement">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WorkItemID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WorkItemName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PricingTermsNode">
+  <sequence>
+   <element name="PricingDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="ServicesRenderedDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PricingConditionNode">
+  <sequence>
+   <element name="ConditionAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValue">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionQuantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionQuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionQuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionRateValue">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionRateValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionStep">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionTypeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DocumentCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PlantNode">
+  <sequence>
+   <element name="Branch">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="City">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="25"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CityCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Country">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CountryName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="County">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="POBox">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Plant">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PlantName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PlantName2">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PostalCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Region">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="RegionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="25"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ShippingPoint">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Street">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PaymentTermsNode">
+  <sequence>
+   <element name="PaymentDueDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="PaymentTerm1Description">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PaymentTerm2Description">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PaymentTerm3Description">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PaymentTermsName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PaymentMethodNode">
+  <sequence>
+   <element name="PaymentMethod">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PaymentMethodName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="PayerPartyNode">
+  <sequence>
+   <element name="AddressID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine1Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine2Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine3Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine4Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine5Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine6Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine7Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine8Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Partner">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunction">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunctionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Person">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="LegallyRequiredTextNode">
+  <sequence>
+   <element name="LegallyRequiredText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="255"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="BillingDocumentGroupItemNode">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SubTotal">
+    <complexType>
+     <sequence>
+      <element name="BillingDocumentGroupItemSubTotalNode" maxOccurs="unbounded" minOccurs="0" type="BillingDocumentGroupItemSubTotalNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="BillingDocumentGroupItemSubTotalNode">
+  <sequence>
+   <element name="AggregationEndDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="AggregationID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AggregationStartDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Items">
+    <complexType>
+     <sequence>
+      <element name="BillingDocumentItemNode" maxOccurs="unbounded" minOccurs="0" type="BillingDocumentItemNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="BillingDocumentItemNode">
+  <sequence>
+   <element name="BillingDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingDocumentItemText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CustomerPurchaseOrderDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="Employee">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="EmployeeFullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="GrossAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_GSTControlCodeDesc1">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_GSTControlCodeDesc2">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_GSTControlCodeDesc3">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_GSTControlCodeDesc4">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_GSTControlCodeDesc5">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="IN_HSNOrSACCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="16"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Material">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="MaterialName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetPriceAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetPriceQuantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetPriceQuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="NetPriceQuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Plant">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PurchaseOrderByCustomer">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="35"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Quantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="13"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="QuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReferenceSDDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReferenceSDDocumentCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReferenceSDDocumentCategoryName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReferenceSDDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesContract">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesContractItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesDocumentItemCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesOrderExternalDocumentId">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesSDDocumentCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SalesSDDocumentCategoryName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="60"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ServicesRenderedDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="StatisticalValue">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxRate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TimesheetOvertimeCategory">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TimesheetOvertimeCategoryText">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="WBSElement">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="24"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_AER_MUTI_QUANTITY__BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_AER_MUTI_QUANTITY__BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Formation_item_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Formation_item_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_IMO_CUSTOMF_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_IMO_CUSTOMF_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_KNA_FORMATION_ITEM_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_KNA_FORMATION_ITEM_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_MONTANTTVA_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_MONTANTTVA_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_M_reg_BDI">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_M_reg_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Montant_HT_facture_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Montant_HT_facture_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_N_retour_BDI">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_N_retour_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Prix_unit_facture_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Prix_unit_facture_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Quantit_facture_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Quantit_facture_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_REMISESD_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="8"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_REMISESD_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_REMISE_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="2"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_REMISE_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_REPRESENTANT2_BDI">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_REPRESENTANT2_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Remise_avoir_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Remise_avoir_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Representant_BDI">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_Representant_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_SalesDistrict1_BDI">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="200"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_SalesDistrict1_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YFA_FORMATION_ITEM_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YFA_FORMATION_ITEM_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_MTTC_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="20"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_MTTC_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_OKE_Dontaxpost_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_OKE_Dontaxpost_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_SalesDistrict_BDI">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="40"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_YY1_SalesDistrict_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_aab_fitem_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_aab_fitem_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_atestitem_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_atestitem_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_designation_BDI">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="90"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_designation_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montantHT_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montantHT_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montant_HT_avoir_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_montant_HT_avoir_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_prix_unit_avoir_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_prix_unit_avoir_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_quantitu_to_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="15"/>
+      <fractionDigits value="14"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_quantitu_to_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_quantitu_to_BDIT">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_quantitu_to_BDIU">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_quantity_total_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_quantity_total_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_wle_custom_item_bd_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_wle_custom_item_bd_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_yy1_mbl_fitem_BDI">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="10"/>
+      <fractionDigits value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="YY1_yy1_mbl_fitem_BDIF">
+    <simpleType>
+     <restriction base="short">
+      <minInclusive value="-128"/>
+      <maxInclusive value="127"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ItemPricingConditions">
+    <complexType>
+     <sequence>
+      <element name="ItemPricingConditionNode" maxOccurs="unbounded" minOccurs="1" type="ItemPricingConditionNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ItemShipToParty" type="ItemShipToPartyNode"/>
+   <element name="ItemTextElements">
+    <complexType>
+     <sequence>
+      <element name="ItemTextElementNode" maxOccurs="unbounded" minOccurs="1" type="ItemTextElementNode"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SIPTItemNode" type="SIPTItemNode"/>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTItemNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BillingDocumentItem">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DiscountAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DisplayTaxRate">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FootnoteReference">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="HideBorderInLayout">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OrdinalNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ReturnReason">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxCodeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="50"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ItemTextElementNode">
+  <sequence>
+   <element name="Language">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TextElement">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TextElementDescription">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TextElementText">
+    <simpleType>
+     <restriction base="string"/>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ItemShipToPartyNode">
+  <sequence>
+   <element name="AddressID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine1Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine2Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine3Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine4Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine5Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine6Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine7Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine8Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Partner">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunction">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunctionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Person">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="ItemPricingConditionNode">
+  <sequence>
+   <element name="ConditionAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValue">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionBaseValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionQuantity">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionQuantityUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionQuantityUnitTechName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="6"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionRateValue">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="12"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionRateValueUnit">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionStep">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="ConditionTypeName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="BillingDownPayments">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CreditAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Currency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPayment">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentDueDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Taxcode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Taxpercentage">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="24"/>
+      <fractionDigits value="9"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotalAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="DownPaymentOverviewNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentGrossAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentNetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentRoundingDifferenceAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="6"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentSettlementGrossAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentSettlementNetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentSettlementTaxAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentTaxAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OpenTotalGrossAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OpenTotalNetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="16"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="OpenTotalTaxAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPayments">
+    <complexType>
+     <sequence>
+      <element name="DownPaymentNode" maxOccurs="unbounded" minOccurs="1" type="DownPaymentNode"/>
+     </sequence>
+    </complexType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="DownPaymentNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CreditAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPayment">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="DownPaymentDueDate">
+    <simpleType>
+     <restriction base="dateTime"/>
+    </simpleType>
+   </element>
+   <element name="NetAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TaxAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TotalAmount">
+    <simpleType>
+     <restriction base="decimal">
+      <totalDigits value="14"/>
+      <fractionDigits value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="TransactionCurrency">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="5"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="CompanyNode">
+  <sequence>
+   <element name="AddressID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine1Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine2Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine3Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine4Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine5Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine6Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine7Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine8Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="BankAccKey">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="34"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CompanyCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="CompanyName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="25"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Country">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="EmailAddress">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="241"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Person">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PhoneNumber">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="30"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Region">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="RegionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="25"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SIPTCompanyNode" type="SIPTCompanyNode"/>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTCompanyNode">
+  <sequence>
+   <element name="CompanyCode">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="4"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="VATRegistration">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+ <complexType name="BillToPartyNode">
+  <sequence>
+   <element name="AddressID">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine1Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine2Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine3Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine4Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine5Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine6Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine7Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressLine8Text">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="AddressType">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="1"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="FullName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="80"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Partner">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunction">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="2"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="PartnerFunctionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Person">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="Region">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="3"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="RegionName">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="25"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="SIPTBillToPartyNode" type="SIPTBillToPartyNode"/>
+  </sequence>
+ </complexType>
+ <complexType name="SIPTBillToPartyNode">
+  <sequence>
+   <element name="BillingDocument">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="10"/>
+     </restriction>
+    </simpleType>
+   </element>
+   <element name="VATRegistration">
+    <simpleType>
+     <restriction base="string">
+      <maxLength value="20"/>
+     </restriction>
+    </simpleType>
+   </element>
+  </sequence>
+ </complexType>
+</schema>

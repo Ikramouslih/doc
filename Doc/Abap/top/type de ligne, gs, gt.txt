@@ -1,0 +1,13 @@
+TABLES : ekpo.
+
+TYPES: BEGIN OF ty_ekpo,
+         ebeln TYPE ekpo-ebeln,
+         ebelp TYPE ekpo-ebelp,
+         matnr TYPE ekpo-matnr,
+       END OF ty_ekpo.
+
+DATA: gt_ekpo   TYPE TABLE OF ty_ekpo,
+      gs_ekpo   TYPE          ty_ekpo,
+
+      gs_report TYPE          zstr_imo_report1,
+      gt_report TYPE TABLE OF zstr_imo_report1.

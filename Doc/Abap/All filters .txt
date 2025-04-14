@@ -1,0 +1,24 @@
+======>I
+TESTED BT => BETWEEN => Select: Include range
+TESTED CP => LIKE => Select: Include pattern
+TESTED NP => NOT LIKE => Select: Exclude pattern
+TESTED EQ => Select: Equal to
+TESTED NB => Select: Exclude range
+TESTED NE => Select: Not equal to
+TESTED GT => Select: Greater than
+TESTED LT => Select: Less than
+TESTED GE => Select: Greater than/equal to
+TESTED LE => Select: Less than/equal to
+
+======>E
+TESTED NOT BETWEEN => Do not select: Include range  
+TESTED NOT LIKE => Do not select: Include pattern
+TESTED LIKE => Do not select: Exclude pattern
+TESTED NE => Do not select: Equal to
+TESTED BT => BETWEEN => Do not select: Exclude range
+TESTED EQ => Do not select: Not equal to
+TESTED LE => Do not select: Greater than
+TESTED GE => Do not select: Less than
+TESTED LT => Do not select: Greater/equal
+TESTED GT => Do not select: Less than/equal
+

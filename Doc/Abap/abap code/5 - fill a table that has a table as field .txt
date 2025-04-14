@@ -1,0 +1,39 @@
+" ZPRIG_IMO_BONCMD_FORM
+
+TABLES : ekpo, ekko, vbap.
+
+DATA : gt_data     TYPE ztt_imo_boncmd_details,
+       gs_data     TYPE zstr_imo_boncmd_details,
+       gt_elements TYPE ztt_imo_posts,
+       gs_element  TYPE zstr_imo_posts.
+
+
+ " EKPO
+  SELECT ek~ebeln, ep~ebelp, ep~matnr, ep~menge, ep~txz01
+    FROM ekko AS ek
+    JOIN ekpo AS ep
+    ON   ek~ebeln = ep~ebeln
+    INTO CORRESPONDING FIELDS OF TABLE @gt_data
+    WHERE ek~ebeln IN @s_ebeln
+    AND   ek~aedat IN @s_aedat.
+
+  " VBAP
+  IF gt_data[] IS NOT INITIAL.                          " gt_data needs to have a value since we use it with(for all entries)
+    SELECT vbeln, posnr, matnr
+      FROM vbap
+      INTO CORRESPONDING FIELDS OF TABLE @gt_elements
+      FOR ALL ENTRIES IN @gt_data                       " to get the values present in gt_data only
+      WHERE matnr EQ @gt_data-matnr.
+  ENDIF.
+
+
+LOOP AT gt_data ASSIGNING FIELD-SYMBOL(<fs_data>).                   " Iterates through gt_data while pointing on each line
+
+    " Iterates through gt_elements to get the elements for each matnr, corresponding to the line pointed on by fs_data
+    LOOP AT gt_elements INTO gs_element WHERE matnr = <fs_data>-matnr.
+
+      APPEND gs_element TO <fs_data>-elements.                         " Appends that element to the table elements inside of a line in gt_data
+
+    ENDLOOP.
+
+ENDLOOP.

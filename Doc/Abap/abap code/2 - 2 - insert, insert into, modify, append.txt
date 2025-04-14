@@ -1,0 +1,21 @@
+" zprog_imo_test_count_insert & zprog_imo_colors1(append value) & ZPROG_IMO_EXOINFO_F4_DISABLE(clear)
+
+DATA: gt_detail TYPE TABLE OF ztab_detail,
+      gs_detail TYPE          ztab_detail.
+
+gs_detail-nom       = 'Mouslih'.
+gs_detail-prenom    = 'Ikram'.
+gs_detail-telephone = 0666666666.
+gs_detail-adresse   = 'adresse'.
+
+APPEND VALUE #( nom = 'mouslih' prenom = 'ikram' telephone = 066666666 adresse = 'adresse' ) TO gt_color.
+
+APPEND       gs_detail    TO          gt_detail.            " Adds a structure to an internal table
+ 
+INSERT       ztab_detail  FROM TABLE  gt_detail. 	   " Adds an internal table to a data table
+
+INSERT INTO  ztab_detail  VALUES      gs_detail.            " Adds a structure to a data table
+
+MODIFY       ztab_detail  FROM        gs_detail.            " Modifies the line where the pk of the structure equals the pk of the internal table
+
+CLEAR gs_detail.

@@ -1,0 +1,54 @@
+
+TABLES : ekko, t001.
+
+TYPES : BEGIN OF ty_ekko,
+          ebeln TYPE ekko-ebeln,
+          bukrs TYPE ekko-bukrs,
+        END OF ty_ekko,
+
+        BEGIN OF ty_t001,
+          bukrs TYPE t001-bukrs,
+          butxt TYPE t001-butxt,
+        END OF ty_t001.
+
+DATA : gt_ekko   TYPE TABLE OF ty_ekko,
+       gs_ekko   TYPE          ty_ekko,
+       gt_t001   TYPE TABLE OF ty_t001,
+       gs_t001   TYPE          ty_t001,
+       gs_report TYPE          zstr_imo_report1,
+       gt_report TYPE TABLE OF zstr_imo_report1.  " ebeln, bukrs, butxt
+
+" PS : we worked with a specific structure bc we printed it with a function module (cl_salv_table=>factory())
+"      otherwise we could just use a line type
+
+**************************************************
+
+SELECT ebeln, bukrs
+    FROM 	       ekko
+    INTO TABLE         @gt_ekko.
+
+ SELECT bukrs, butxt
+    FROM               t001
+    FOR ALL ENTRIES IN @gt_ekko
+    WHERE 	       bukrs = @gt_ekko-bukrs
+    INTO TABLE         @gt_t001.
+
+**************************************************
+
+" we fill our table with our built up structure
+
+ LOOP AT gt_ekko INTO gs_ekko.
+
+    READ TABLE gt_t001 INTO gs_t001 WITH KEY bukrs = gs_ekko-bukrs.
+    IF sy-subrc EQ 0 .
+      gs_report-butxt = gs_t001-butxt.
+    ENDIF.
+
+    gs_report-ebeln = gs_ekko-ebeln.
+    gs_report-bukrs = gs_ekko-bukrs.
+
+    APPEND gs_report TO gt_report.
+
+ ENDLOOP.
+
+

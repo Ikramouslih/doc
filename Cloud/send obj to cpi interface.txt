@@ -1,0 +1,198 @@
+@EndUserText.label : 'Table pour déclancher IRIUM Relance avec PR.'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zdb_irium_trigpr {
+
+  key client             : abap.clnt not null;
+  key societe_sap        : abap.char(4) not null;
+  key piece_reference    : abap.char(45) not null;
+  key exercice_comptable : abap.char(4) not null;
+
+}
+
+
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'CDS pour déclancher IRIUM Relance PR'
+@Metadata.ignorePropagatedAnnotations: true
+define root view entity ZIRIUM_TRIGPR_CDS as select from zdb_irium_trigpr
+{
+    key societe_sap as Societe_SAP,
+    key piece_reference as Piece_reference,
+    key exercice_comptable as Exercice_comptable
+}
+
+
+unmanaged implementation in class zbp_irium_trigpr_cds unique;
+//strict ( 2 );
+
+define behavior for ZIRIUM_TRIGPR_CDS //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) Societe_SAP, Piece_reference, Exercice_comptable;
+}
+
+
+
+CLASS lhc_zirium_trigpr_cds DEFINITION INHERITING FROM cl_abap_behavior_handler.
+  PRIVATE SECTION.
+
+    TYPES:
+      BEGIN OF ty_payload,
+        Societe_SAP         TYPE zdb_irium_trigpr-societe_sap,
+        Piece_reference     TYPE zdb_irium_trigpr-piece_reference,
+        Exercice_comptable  TYPE zdb_irium_trigpr-exercice_comptable,
+      END OF ty_payload.
+
+    CONSTANTS:
+      base_url     TYPE string VALUE 'https://optorg-dev-kitsk6tl.it-cpi019-rt.cfapps.us10-002.hana.ondemand.com/http/RelanceIRIUMAll',
+      content_type TYPE string VALUE 'Content-Type',
+      json_content TYPE string VALUE 'application/json; charset=UTF-8',
+      username     TYPE string VALUE 'sb-54325a83-a279-46ed-af34-a349554adde6!b386374|it-rt-optorg-dev-kitsk6tl!b56186',
+      password     TYPE string VALUE 'fb7ece63-c691-41d2-aee3-84247f4099e7$xq2eLBENGejsECTSTDOSNG0Xhq5JcGF40uaRbSz3Nws='.
+
+    METHODS get_instance_authorizations FOR INSTANCE AUTHORIZATION
+      IMPORTING keys REQUEST requested_authorizations FOR zirium_trigpr_cds RESULT result.
+
+    METHODS create FOR MODIFY
+      IMPORTING entities FOR CREATE zirium_trigpr_cds.
+
+    METHODS update FOR MODIFY
+      IMPORTING entities FOR UPDATE zirium_trigpr_cds.
+
+    METHODS delete FOR MODIFY
+      IMPORTING keys FOR DELETE zirium_trigpr_cds.
+
+    METHODS read FOR READ
+      IMPORTING keys FOR READ zirium_trigpr_cds RESULT result.
+
+    METHODS lock FOR LOCK
+      IMPORTING keys FOR LOCK zirium_trigpr_cds.
+
+ENDCLASS.
+
+CLASS lhc_zirium_trigpr_cds IMPLEMENTATION.
+
+  METHOD get_instance_authorizations.
+  ENDMETHOD.
+
+  METHOD create.
+      DATA: ls_obj_data TYPE ty_payload,
+            json_post     TYPE string,
+            client    TYPE REF TO if_web_http_client,
+            response  TYPE REF TO if_web_http_response,
+            lv_response    TYPE string.
+
+
+      LOOP AT entities INTO DATA(ls_entity).
+
+            ls_obj_data-exercice_comptable = ls_entity-Exercice_comptable.
+            ls_obj_data-piece_reference = ls_entity-Piece_reference.
+            ls_obj_data-societe_sap = ls_entity-Societe_SAP.
+            TRY.
+
+*                json_post = xco_cp_json=>data->from_abap( ls_obj_data )->apply(
+*                VALUE #( ( xco_cp_json=>transformation->underscore_to_camel_case ) ) )->to_string( ).
+
+
+                " Convert to JSON keeping original field names exactly as-is
+                json_post = /ui2/cl_json=>serialize(
+                  data        = ls_obj_data
+                  compress    = abap_false
+                  pretty_name = /ui2/cl_json=>pretty_mode-user
+                ).
+
+                TRY.
+
+                    TRY.
+                        DATA(destination) = cl_http_destination_provider=>create_by_url( base_url ).
+                        client = cl_web_http_client_manager=>create_by_http_destination( destination ).
+                        client->get_http_request( )->set_authorization_basic(
+                          i_username = username
+                          i_password = password
+                        ).
+                      CATCH cx_web_http_client_error INTO DATA(lx_client_error).
+                        RAISE EXCEPTION lx_client_error.
+                    ENDTRY.
+
+
+
+                    DATA(request) = client->get_http_request( ).
+                    request->set_header_field( i_name = content_type i_value = json_content ).
+                    request->set_text( json_post ).
+
+                    response = client->execute( if_web_http_client=>post ).
+                    lv_response = response->get_text( ).
+
+                  CATCH cx_web_http_client_error INTO DATA(lx_http_error).
+                    RAISE EXCEPTION lx_http_error.
+                  CATCH cx_root INTO DATA(lx_root_error).
+                    RAISE EXCEPTION lx_root_error.
+                ENDTRY.
+
+
+
+            CATCH cx_web_http_client_error INTO DATA(lx_http_error_2).
+              lx_http_error->get_text( ).
+            CATCH cx_root INTO DATA(lx_root_error_2).
+              lx_root_error->get_text( ).
+           ENDTRY.
+
+
+      ENDLOOP.
+    ENDMETHOD.
+
+  METHOD update.
+  ENDMETHOD.
+
+  METHOD delete.
+  ENDMETHOD.
+
+  METHOD read.
+  ENDMETHOD.
+
+  METHOD lock.
+  ENDMETHOD.
+
+ENDCLASS.
+
+CLASS lsc_zirium_trigpr_cds DEFINITION INHERITING FROM cl_abap_behavior_saver.
+  PROTECTED SECTION.
+
+    METHODS finalize REDEFINITION.
+
+    METHODS check_before_save REDEFINITION.
+
+    METHODS save REDEFINITION.
+
+    METHODS cleanup REDEFINITION.
+
+    METHODS cleanup_finalize REDEFINITION.
+
+ENDCLASS.
+
+CLASS lsc_zirium_trigpr_cds IMPLEMENTATION.
+
+  METHOD finalize.
+  ENDMETHOD.
+
+  METHOD check_before_save.
+  ENDMETHOD.
+
+  METHOD save.
+  ENDMETHOD.
+
+  METHOD cleanup.
+  ENDMETHOD.
+
+  METHOD cleanup_finalize.
+  ENDMETHOD.
+
+ENDCLASS.

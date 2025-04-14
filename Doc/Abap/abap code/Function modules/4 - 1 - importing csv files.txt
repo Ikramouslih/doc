@@ -1,0 +1,89 @@
+" ZPROG_IMO_EXPORT_IMPORT
+" description : 2 radio buttons and a field, if a the 1st radio button is marked, we export import a csv file and display it if the 2nd radio button is marked we clear and disable the field.
+
+
+TABLES : ekpo.
+
+TYPES: BEGIN OF ty_ekpo,
+         ebeln TYPE ekpo-ebeln,
+         ebelp TYPE ekpo-ebelp,
+         menge TYPE ekpo-menge,
+       END OF ty_ekpo.
+
+SELECTION-SCREEN : BEGIN OF BLOCK a WITH FRAME.
+  PARAMETERS : rb_i     RADIOBUTTON GROUP rb1 USER-COMMAND test1 DEFAULT 'X',
+               rb_ni    RADIOBUTTON GROUP rb1,
+               p_fichi TYPE string MODIF ID iii.
+SELECTION-SCREEN END OF BLOCK a.
+
+" Disable field
+AT SELECTION-SCREEN OUTPUT.
+LOOP AT SCREEN.
+   IF rb_i EQ 'X' AND screen-group1 EQ 'III' .
+      screen-input = '1' .
+      MODIFY SCREEN.
+      CONTINUE.
+    ELSEIF rb_ni EQ 'X' AND screen-group1 EQ 'III'.
+      screen-input = '0'.
+      CLEAR p_fichi.
+      MODIFY SCREEN.
+      CONTINUE.
+    ELSEIF rb_i EQ ' ' AND screen-group1 EQ 'III'.
+      screen-input = '0'.
+      CLEAR p_fichi.
+      MODIFY SCREEN.
+      CONTINUE.
+    ELSEIF rb_ni EQ ' ' AND screen-group1 EQ 'III'.
+      screen-input = '1'.
+      MODIFY SCREEN.
+      CONTINUE.
+    ENDIF.
+ENDLOOP.
+
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR p_fichi.
+  IF rb_i EQ 'X'.
+
+    " To open the window with the files to choose from
+    DATA : lt_files       TYPE filetable,
+           lv_return_code TYPE i.
+    CALL METHOD cl_gui_frontend_services=>file_open_dialog
+        CHANGING
+          file_table              = lt_files
+          rc                      = lv_return_code.
+    IF sy-subrc <> 0.
+      RETURN.
+    ENDIF.
+    TRY.
+        p_fichi = lt_files[ 1 ].
+      CATCH cx_sy_itab_line_not_found.
+        RETURN.
+    ENDTRY.
+
+  " To upload the file
+  DATA : i_tab_raw_data TYPE  truxs_t_text_data.
+  cl_gui_frontend_services=>gui_upload(
+  EXPORTING
+      filename             = p_fichi         " file name that we want imported
+  CHANGING
+      data_tab             = i_tab_raw_data  " raw data that we imported from the csv file
+  ).
+  DELETE i_tab_raw_data INDEX 1.
+
+  " Turn data from a csv into an sap entity
+  DATA: gt_uploaded TYPE TABLE OF ty_ekpo.
+  CALL FUNCTION 'TEXT_CONVERT_CSV_TO_SAP'
+    EXPORTING
+      i_field_seperator    = ';'
+      i_tab_raw_data       = i_tab_raw_data  " raw data that we imported from the csv file
+    TABLES
+      i_tab_converted_data = gt_uploaded.    " where we are storing the data that was extracted from the csv file
+
+  " To display the data as with a grid
+  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+    EXPORTING
+      i_structure_name     = 'ZSTR_IMO_ALVEKPO'
+    TABLES
+      t_outtab             = gt_uploaded.    " table that we want printed with the data (data source)
+
+ENDIF.

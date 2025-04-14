@@ -1,0 +1,2 @@
+DATA : lv_message  TYPE string          .
+DATA : lv_index    TYPE n       VALUE 0 .

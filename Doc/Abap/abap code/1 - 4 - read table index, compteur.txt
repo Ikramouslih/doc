@@ -1,0 +1,64 @@
+" zprog_imo_test
+
+TABLES : ekpo, ekko.
+
+TYPES: BEGIN OF ty_ekpo,
+         ebeln TYPE ekpo-ebeln,
+         ebelp TYPE ekpo-ebelp,
+         matnr TYPE ekpo-matnr,
+       END OF ty_ekpo.
+
+TYPES: BEGIN OF ty_ekko,
+         ebeln TYPE ekpo-ebeln,
+         bukrs TYPE ekko-bukrs,
+         bsart TYPE ekko-bsart,
+       END OF ty_ekko.
+
+DATA: gt_ekpo TYPE TABLE OF ty_ekpo,
+      gs_ekpo TYPE          ty_ekpo,
+      gt_ekko TYPE TABLE OF ty_ekko,
+      gs_ekko TYPE          ty_ekko.
+
+*************************************
+
+PARAMETERS     : p_ebeln TYPE ekpo-ebeln OBLIGATORY.
+SELECT-OPTIONS : s_ebelp FOR ekpo-ebelp.
+
+*************************************
+
+SELECT ebeln, bukrs, bsart
+       FROM 	   ekko
+       INTO TABLE  @gt_ekko
+       WHERE       ebeln  EQ  @p_ebeln.
+
+SELECT ebeln, ebelp, matnr
+       FROM ekpo
+       INTO TABLE          @gt_ekpo
+       FOR ALL ENTRIES IN  @gt_ekko
+       WHERE 		   ebeln  EQ  @gt_ekko-ebeln.
+
+
+  DATA : lv_message TYPE string.
+  DATA : lv_index TYPE n.
+  DATA : lv_cmpt TYPE n VALUE 0.
+
+  SORT gt_ekpo BY ebeln.
+
+  LOOP AT gt_ekpo INTO gs_ekpo.
+
+    lv_index = sy-tabix.
+    ADD 1 TO lv_cmpt.
+
+    READ TABLE gt_ekpo INTO DATA(ls_ekpo) INDEX lv_index + 1.
+    IF sy-subrc NE 0 OR ( sy-subrc EQ 0 AND gs_ekpo-ebeln NE ls_ekpo-ebeln ).
+
+      WRITE : /'commande', gs_ekpo-ebeln, 'nbr', lv_cmpt.
+      CLEAR : lv_cmpt.
+
+    ENDIF.
+
+  ENDLOOP.
+
+
+
+  " READ TABLE gt_header INTO gs_header INDEX 1.          " First line

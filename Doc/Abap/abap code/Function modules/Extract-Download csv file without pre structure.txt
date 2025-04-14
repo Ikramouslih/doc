@@ -1,0 +1,78 @@
+EXTRACT/DOWNLOAD CSV 
+
+*&---------------------------------------------------------------------*
+*& Report ZPROG_EXTAB_CSV
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT zprog_extab_csv.
+
+TABLES: dd02l.
+
+DATA: iout          TYPE TABLE OF string,
+      xout          TYPE string,
+      lt_table_data TYPE REF TO data,
+      gv_path       TYPE string,
+      lv_path        TYPE string.
+
+FIELD-SYMBOLS: <fs_table> TYPE STANDARD TABLE,
+               <fs_line>  TYPE any,
+               <fs_field> TYPE any.
+
+SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
+  PARAMETERS: p_tab TYPE dd02l-tabname,
+              p_mef TYPE string,
+              p_var TYPE string.
+SELECTION-SCREEN END OF BLOCK b1.
+
+START-OF-SELECTION.
+  IF p_tab IS INITIAL.
+    MESSAGE 'Choisissez une table.' TYPE 'E'.
+    EXIT.
+  ENDIF.
+
+  " Create dynamic internal table for the given table name.
+  CREATE DATA lt_table_data TYPE TABLE OF (p_tab).
+  ASSIGN lt_table_data->* TO <fs_table>.
+
+  " Fetch all data from the specified table.
+  SELECT * FROM (p_tab) INTO TABLE <fs_table>.
+  IF sy-subrc <> 0.
+    MESSAGE 'No data found or invalid table name.' TYPE 'E'.
+    EXIT.
+  ENDIF.
+
+  " Loop through the table data to build CSV lines.
+  LOOP AT <fs_table> ASSIGNING <fs_line>.
+    CLEAR xout.
+    DO.
+      ASSIGN COMPONENT sy-index OF STRUCTURE <fs_line> TO <fs_field>.
+      IF sy-subrc <> 0.
+        EXIT.
+      ENDIF.
+      IF sy-index = 1.
+        xout = <fs_field>.
+      ELSE.
+        DESCRIBE FIELD <fs_field> HELP-ID DATA(lv_type).
+        CONCATENATE xout <fs_field> INTO xout SEPARATED BY ','.
+      ENDIF.
+    ENDDO.
+    APPEND xout TO iout.
+  ENDLOOP.
+
+  lv_path = 'C:\Users\Ikram.Mouslih\Desktop\export.csv'.
+  " Export the data to CSV using GUI_DOWNLOAD.
+  CALL FUNCTION 'GUI_DOWNLOAD'
+    EXPORTING
+      filename = lv_path
+      filetype = 'ASC'
+    TABLES
+      data_tab = iout
+    EXCEPTIONS
+      OTHERS   = 1.
+
+  IF sy-subrc = 0.
+    MESSAGE 'CSV exported successfully!' TYPE 'S'.
+  ELSE.
+    MESSAGE 'Error during CSV export!' TYPE 'E'.
+  ENDIF.

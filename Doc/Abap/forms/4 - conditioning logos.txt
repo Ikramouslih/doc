@@ -1,0 +1,79 @@
+" /OSE78
+0 ) prepare the pictures : save them with the extentions BMP.
+1 ) enter the transaction /OSE78.
+2 ) Graphiques de fomulaire > stockage sur le serveur > graphics > BMAP images en mode points.
+3 ) click on IMPORT icon (first one)
+4 ) choose the placement of the img in local
+5 ) enter name (rememeber this name you will use it), desc
+6 ) check "images en modes points couleur" & uncheck compression (only reserver needs to be checked)
+7 ) you can check if the pictue was saved by looking for it using the name u gave it, in stockage sur le serveur doc.
+
+----------------------------------------------------
+
+" /OSE38
+" Condition
+DATA : gv_butxt    TYPE char1.
+IF gs_header-butxt EQ 'MAPHAR'.                       " Conditioning the logos
+    gv_butxt = 'X'
+ELSEIF gs_header-butxt EQ 'PROPHARMAL'.
+    gv_butxt = ''.
+ENDIF.
+
+" Export
+CALL FUNCTION lv_funcname           
+    EXPORTING
+      gv_butxt  = gv_butxt.
+
+----------------------------------------------------
+
+"/OSFP (Interface)
+
+Importation : GV_BUTXT	TYPE	CHAR1
+		
+Données globales : 
+	* XSTRING	TYPE	XSTRING		
+	* STRING	TYPE	STRING		
+
+Initialisation du code :
+
+string = 'image/bmp'.
+data: lv_logoname TYPE TDOBNAME.
+
+if gv_butxt IS INITIAL. """""""""""""""""
+ lv_logoname = 'IMG1'.	"""""""""""""""""
+else.
+ lv_logoname = 'IMG2'. 	"""""""""""""""""
+ENDIF.
+
+CALL METHOD cl_ssf_xsf_utilities=>get_bds_graphic_as_bmp
+  EXPORTING
+    p_object = 'GRAPHICS'
+    p_name = lv_logoname
+    p_id = 'BMAP'
+    p_btype = 'BCOL'
+  RECEIVING
+    p_bmp = xstring
+  EXCEPTIONS
+    not_found = 1
+    internal_error = 2
+    OTHERS = 3.
+
+----------------------------------------------------
+
+"/OSFP (Form)
+
+1 ) check if the form is on modification mode
+2 ) drag the variables from importation to the form 
+3 ) right click on the top form folder in context window, create, graphic
+4 ) last section in the opened window, open "graphique" section, change "type de graphique" to "contenu graphique"
+5 ) click on enter, press yes 
+6 ) zone = XSTRING / Type MIME = STRING
+7 ) save
+
+
+" MEF
+1 ) drag and drop Image Field
+2 ) in the object window, click on BINDING
+3 ) bind the image feild to the graphic node $.GRAPHIC, NOT TO THE VARIABLE
+
+

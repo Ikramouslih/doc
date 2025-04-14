@@ -1,0 +1,60 @@
+" ZPROG_IMO_ALV_FACTORY
+" description : print a table and change a colomn's color and personalize its name depending on length (length can be changed manually in output)
+" cl_salv_table=>factory() : It's another way of displaying ALV grids, offers more functionalities and flexibility compared to the older REUSE_ALV_GRID_DISPLAY function.
+
+
+TABLES : ekko, t001.
+
+DATA : gs_report TYPE          zstr_imo_report1,
+       gt_report TYPE TABLE OF zstr_imo_report1.
+
+select ebeln, ek~bukrs, butxt
+  from t001 as t0
+  join ekko as ek
+  on   t0~bukrs = ek~bukrs
+  INTO CORRESPONDING FIELDS OF TABLE @gt_report.
+
+  DATA : lex_message TYPE REF TO cx_salv_msg.
+  DATA: wo_color  TYPE lvc_s_colo,
+        lo_alv    TYPE REF TO cl_salv_table,
+        columns   TYPE REF TO cl_salv_columns_table,
+        gr_column TYPE REF TO cl_salv_column_table,
+        column    TYPE REF TO cl_salv_column.
+
+  TRY.
+
+      cl_salv_table=>factory(
+             IMPORTING
+               r_salv_table = lo_alv
+             CHANGING
+               t_table      = gt_report ).
+
+      columns = lo_alv->get_columns( ).
+
+      wo_color-col = '5'.
+      wo_color-int = '1'.
+
+      gr_column ?= columns->get_column( 'EBELN' ).
+      gr_column->set_output_length('50').
+      gr_column->set_color( wo_color ).
+
+      column ?= columns->get_column( 'EBELN' ).
+      column->set_short_text( 'Col1' ).
+      column->set_medium_text( 'Col1' ).
+      column->set_long_text( 'Colonne 1' ).
+
+      column = columns->get_column( 'BUKRS' ).
+      column->set_short_text( 'Col2' ).
+      column->set_medium_text( 'Col2' ).
+      column->set_long_text( 'Colonne 3' ).
+
+      column = columns->get_column( 'BUTXT' ).
+      column->set_short_text( 'Col3' ).
+      column->set_medium_text( 'Col3' ).
+      column->set_long_text( 'Colonne 3' ).
+
+      lo_alv->display( ).
+
+    CATCH cx_salv_msg INTO lex_message.
+
+  ENDTRY.

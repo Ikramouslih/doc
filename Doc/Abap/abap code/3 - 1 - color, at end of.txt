@@ -1,0 +1,41 @@
+" ZPROG_IMO_COLORS1
+" description : print the name of the carte that all of its lines contain green. 
+
+TYPES : BEGIN OF ty_color,
+          carte TYPE string,
+          color TYPE string,
+        END OF ty_color.
+
+DATA : gt_color TYPE TABLE OF ty_color,
+       gs_color TYPE ty_color.
+
+""""""""""""""""""""""""""""""""""""""""""""""
+
+APPEND VALUE #( carte = 'Carte 1' color = 'Red' )    TO gt_color.
+APPEND VALUE #( carte = 'Carte 1' color = 'Green' )  TO gt_color.
+APPEND VALUE #( carte = 'Carte 1' color = 'Yellow' ) TO gt_color.
+
+""""""""""""""""""""""""""""""""""""""""""""""
+
+DATA : doneisgreen TYPE abap_bool VALUE abap_true.
+SORT gt_color BY carte.
+
+LOOP AT gt_color INTO gs_color.
+
+  TRANSLATE gs_color-color TO UPPER CASE.   " pretreatment
+
+  IF gs_color-color NE 'GREEN'. 	    " condition
+     doneisgreen = abap_false.
+  ENDIF.
+
+  AT END OF carte.			    " end result 
+
+    if doneisgreen EQ abap_true.	
+      WRITE : / gs_color-carte.
+    ENDIF.
+
+  ENDAT.
+
+  doneisgreen = abap_true.       	    " reinitialisation
+
+ENDLOOP.

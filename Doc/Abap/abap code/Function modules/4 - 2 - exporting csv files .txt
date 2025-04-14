@@ -1,0 +1,62 @@
+" ZPROG_IMO_EXPORT_IMPORT
+" description : 2 radio buttons and a field, if a the 1st radio button is marked, we export as a csv file if the 2nd radio button is marked we clear and disable the field.
+
+
+
+TABLES : ekpo.
+
+TYPES: BEGIN OF ty_ekpo,
+         ebeln TYPE ekpo-ebeln,
+         ebelp TYPE ekpo-ebelp,
+         menge TYPE ekpo-menge,
+       END OF ty_ekpo.
+
+SELECTION-SCREEN : BEGIN OF BLOCK a WITH FRAME.
+  PARAMETERS : rb_x     RADIOBUTTON GROUP rb1 USER-COMMAND test1 DEFAULT 'X',
+               rb_nx    RADIOBUTTON GROUP rb1,
+               p_fichx TYPE string MODIF ID xxx.
+SELECTION-SCREEN END OF BLOCK a.
+
+" Disable field
+AT SELECTION-SCREEN OUTPUT.
+LOOP AT SCREEN.
+   IF rb_x EQ 'X' AND screen-group1 EQ 'XXX' .
+      screen-input = '1' .
+      MODIFY SCREEN.
+      CONTINUE.
+    ELSEIF rb_nx EQ 'X' AND screen-group1 EQ 'XXX'.
+      screen-input = '0'.
+      CLEAR p_fichx.
+      MODIFY SCREEN.
+      CONTINUE.
+    ELSEIF rb_x EQ ' ' AND screen-group1 EQ 'XXX'.
+      screen-input = '0'.
+      CLEAR p_fichx.
+      MODIFY SCREEN.
+      CONTINUE.
+    ELSEIF rb_nx EQ ' ' AND screen-group1 EQ 'XXX'.
+      screen-input = '1'.
+      MODIFY SCREEN.
+      CONTINUE.
+    ENDIF.
+ENDLOOP.
+
+" Exporting
+IF rb_x EQ 'X' AND p_fichx IS NOT INITIAL.
+
+  DATA: gt_ekpo     TYPE TABLE OF ty_ekpo,
+        gs_ekpo     TYPE          ty_ekpo.
+
+  SELECT ebeln, ebelp, menge
+    FROM ekpo
+    INTO CORRESPONDING FIELDS OF TABLE @gt_ekpo.
+
+   cl_icf_csv=>request_for_write_into_csv(
+      it_data            = gt_ekpo
+      iv_init_dir        = 'C:\Users\Ikram.Mouslih\Desktop\export_results'
+      iv_hdr_struct_name = 'ZSTR_IMO_ALVEKPO'
+      iv_file_name       =  p_fichx && '.csv'
+  ).
+
+ENDIF.
+

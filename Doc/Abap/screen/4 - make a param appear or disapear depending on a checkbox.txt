@@ -1,0 +1,32 @@
+" ZPROG_IMO_LYDEC_FORMALV
+" description : make a param appear or disapear depending on a checkbox
+
+
+
+SELECTION-SCREEN BEGIN OF BLOCK b WITH FRAME.
+  PARAMETERS : cb_csv  AS CHECKBOX DEFAULT '' USER-COMMAND abc.
+SELECTION-SCREEN END OF BLOCK b.
+
+SELECTION-SCREEN BEGIN OF BLOCK c WITH FRAME.
+  PARAMETERS : p_file TYPE string MODIF ID pf.
+SELECTION-SCREEN END OF BLOCK c.
+
+
+AT SELECTION-SCREEN OUTPUT.
+  LOOP AT SCREEN.
+
+    CASE screen-group1.
+      WHEN 'PF'.
+        IF cb_csv <> 'X'.
+          screen-input = '0'.
+          screen-invisible = '1'.
+          screen-output = '0'.
+        ELSE.
+          screen-input = '1'.
+          screen-invisible = '0'.
+          screen-output = '1'.
+        ENDIF.
+        MODIFY SCREEN.
+    ENDCASE.
+
+  ENDLOOP.
