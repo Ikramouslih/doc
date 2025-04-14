@@ -1,0 +1,9 @@
+communication user => who 
+communication system => where 
+communication scenario => what service
+communication arrangement => config 
+
+
+
+
+x-csrf-token = fetch
